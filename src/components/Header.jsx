@@ -8,6 +8,7 @@ export default function Header() {
     { to: "/projects", label: "Loyihalar" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact" },
+    { to: "/skills", label: "Skills & Tools" },
   ];
 
   const linkStyle = ({ isActive }) =>

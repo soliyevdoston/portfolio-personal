@@ -1,6 +1,7 @@
 // src/components/Main.jsx
 import React from "react";
 import profile from "../assets/personal.jpeg"; // O'z rasmiingni qo'y
+import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
@@ -57,15 +58,15 @@ export default function Main() {
           href="#"
           className="px-6 py-3 bg-black text-white rounded-full shadow hover:bg-gray-800 transition"
         >
-          Yechimlar
-        </a>
-
-        <a
-          href="#"
-          className="px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition"
-        >
           Haqimda
         </a>
+
+        <Link
+          to="/skills"
+          className="px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition"
+        >
+          Ko'nikmalar Va Vositalar
+        </Link>
       </div>
 
       {/* Footer */}
