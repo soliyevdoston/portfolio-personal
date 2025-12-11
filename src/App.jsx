@@ -5,6 +5,7 @@ import Main from "./components/Main.jsx";
 import Projects from "./components/Projects.jsx";
 import Header from "./components/Header.jsx";
 import SkillsTools from "./components/SkillsTools.jsx";
+import Contact from "./components/Contact.jsx";
 
 import bodyImg from "./assets/body.svg";
 
@@ -27,10 +28,10 @@ export default function App() {
           backgroundImage: `url(${bodyImg})`,
         }}
       />
-
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/skills" element={<SkillsTools />} />
       </Routes>
     </BrowserRouter>
