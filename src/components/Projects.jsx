@@ -34,7 +34,7 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/project1.png",
+    image: "/src/assets/Ferteach.png",
   },
   {
     id: 1,
@@ -45,7 +45,7 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/project1.png",
+    image: "/src/assets/Ferteach.png",
   },
   {
     id: 1,
@@ -57,7 +57,7 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/project1.png",
+    image: "/src/assets/Ferteach.png",
   },
   {
     id: 2,
@@ -69,7 +69,7 @@ const SAMPLE = [
     tags: ["HTML", "CSS", "JS"],
     github: "https://github.com/username/ecommerce-ui",
     demo: "https://ecommerce-ui.netlify.app",
-    image: "/src/assets/project2.png",
+    image: "/src/assets/Ferteach.png",
   },
   {
     id: 2,
@@ -81,7 +81,7 @@ const SAMPLE = [
     tags: ["HTML", "CSS", "JS"],
     github: "https://github.com/username/ecommerce-ui",
     demo: "https://ecommerce-ui.netlify.app",
-    image: "/src/assets/project2.png",
+    image: "/src/assets/Ferteach.png",
   },
   {
     id: 2,
@@ -93,7 +93,7 @@ const SAMPLE = [
     tags: ["HTML", "CSS", "JS"],
     github: "https://github.com/username/ecommerce-ui",
     demo: "https://ecommerce-ui.netlify.app",
-    image: "/src/assets/project2.png",
+    image: "/src/assets/Ferteach.png",
   },
   // Shu tarzda boshqa loyihalarni qo‘shish mumkin
 ];
