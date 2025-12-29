@@ -1,12 +1,11 @@
 // src/components/Projects.jsx
 import React, { useState } from "react";
 import GlassCards from "./projects/GlassCards";
-import TimelineProjects from "./projects/TimelineProjects";
 import MasonryGrid from "./projects/MasonryGrid";
 
 const tabs = [
   { id: "glass", label: "Glass 3D Cards" },
-  { id: "timeline", label: "Timeline" },
+
   { id: "masonry", label: "Masonry Grid" },
 ];
 

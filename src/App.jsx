@@ -6,8 +6,9 @@ import Projects from "./components/Projects.jsx";
 import Header from "./components/Header.jsx";
 import SkillsTools from "./components/SkillsTools.jsx";
 import Contact from "./components/Contact.jsx";
+import About from "./components/About.jsx";
 
-import bodyImg from "./assets/body.svg";
+import bodyImg from "./assets/body2.svg";
 
 export default function App() {
   return (
@@ -33,6 +34,7 @@ export default function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/skills" element={<SkillsTools />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </BrowserRouter>
   );

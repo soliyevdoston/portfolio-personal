@@ -1,25 +1,32 @@
-// src/components/ContactPage.jsx
-import React from "react";
+import React, { useState } from "react";
 import {
   FaTelegram,
   FaInstagram,
   FaGithub,
   FaEnvelope,
   FaPhone,
+  FaSms,
 } from "react-icons/fa";
 
-export default function ContactPage() {
+export default function ContactCompact() {
+  const [success, setSuccess] = useState(false);
+
   const contacts = [
-    { icon: <FaTelegram />, label: "@username", link: "https://t.me/username" },
     {
-      icon: <FaInstagram />,
-      label: "@username",
-      link: "https://instagram.com/username",
+      icon: <FaPhone />,
+      label: "+998 91 325 77 06",
+      link: "tel:+998913257706",
     },
+    { icon: <FaSms />, label: "SMS yuborish", link: "sms:+998913257706" },
     {
       icon: <FaEnvelope />,
-      label: "example@gmail.com",
-      link: "mailto:example@gmail.com",
+      label: "solijonovd97@gmail.com",
+      link: "mailto:solijonovd97@gmail.com",
+    },
+    {
+      icon: <FaTelegram />,
+      label: "@Dostonbek_Solijonov",
+      link: "https://t.me/Dostonbek_Solijonov",
     },
     {
       icon: <FaGithub />,
@@ -27,46 +34,120 @@ export default function ContactPage() {
       link: "https://github.com/username",
     },
     {
-      icon: <FaPhone />,
-      label: "+998 90 123 45 67",
-      link: "tel:+998901234567",
+      icon: <FaInstagram />,
+      label: "@username",
+      link: "https://instagram.com/username",
     },
   ];
 
-  return (
-    <div className="relative min-h-screen flex justify-center items-center bg-white overflow-hidden">
-      {contacts.map((item, index) => {
-        const angle = (index / contacts.length) * 360;
-        const radius = 150;
-        const x = radius * Math.cos((angle * Math.PI) / 180);
-        const y = radius * Math.sin((angle * Math.PI) / 180);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const message = e.target.message.value;
 
-        return (
+    const botToken = "YOUR_BOT_TOKEN";
+    const chatId = "YOUR_CHAT_ID";
+
+    const text = `
+Yangi xabar!
+Ism: ${name}
+Email: ${email}
+Xabar: ${message}
+    `;
+
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
+      text
+    )}`;
+
+    try {
+      const res = await fetch(url);
+      if (res.ok) {
+        setSuccess(true);
+        e.target.reset();
+      } else {
+        console.error("Xabar yuborilmadi");
+      }
+    } catch (err) {
+      console.error("Xato:", err);
+    }
+  };
+
+  return (
+    <main className="min-h-screen bg-gray-50 flex flex-col items-center px-4 py-8 gap-8">
+      <div className="text-center max-w-md">
+        <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
+          Bog‘lanish
+        </h1>
+        <p className="mt-2 text-gray-600 text-sm sm:text-base">
+          Loyihalar, takliflar yoki savollar bo‘lsa — bemalol yozing
+        </p>
+      </div>
+
+      {/* Contact Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full max-w-2xl">
+        {contacts.map((item, idx) => (
           <a
-            key={index}
+            key={idx}
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className={`absolute w-56 p-6 rounded-3xl bg-white/20 backdrop-blur-md
-                        border border-white/20 shadow-lg flex flex-col items-center gap-3
-                        transition-transform duration-300 hover:scale-110 hover:-translate-y-2 hover:shadow-2xl`}
-            style={{
-              top: `50%`,
-              left: `50%`,
-              transform: `translate(${x}px, ${y}px) rotate(${
-                index % 2 === 0 ? -5 : 5
-              }deg)`,
-            }}
+            className="flex flex-col items-center p-3 sm:p-4 rounded-xl bg-white/70 backdrop-blur border shadow-md text-center min-w-[180px]
+                       transition transform duration-300 hover:scale-105 hover:-translate-y-1 hover:shadow-2xl hover:bg-white"
           >
-            <div className="text-gray-900 text-3xl hover:text-gray-700 transition-colors">
+            <div className="text-xl sm:text-2xl mb-1 text-gray-900 hover:text-blue-600 transition-colors">
               {item.icon}
             </div>
-            <span className="text-gray-900 font-semibold text-lg text-center">
+            <p className="font-medium text-sm sm:text-base text-gray-900 hover:text-blue-600 transition-colors">
               {item.label}
-            </span>
+            </p>
           </a>
-        );
-      })}
-    </div>
+        ))}
+      </div>
+
+      {/* Divider */}
+      <div className="w-full max-w-2xl h-px bg-gray-200"></div>
+
+      {/* Form */}
+      <form onSubmit={handleSubmit} className="space-y-2 w-full max-w-2xl">
+        <input
+          type="text"
+          name="name"
+          placeholder="Ismingiz"
+          required
+          className="w-full px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base"
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+          className="w-full px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base"
+        />
+        <textarea
+          name="message"
+          rows="3"
+          placeholder="Xabaringiz"
+          required
+          className="w-full px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl border resize-none focus:outline-none focus:ring-2 focus:ring-black/20 text-sm sm:text-base"
+        />
+        <button
+          type="submit"
+          className="w-full sm:w-auto px-6 py-2.5 sm:py-3 bg-black text-white rounded-full hover:bg-gray-800 hover:scale-105 transition transform duration-300 text-sm sm:text-base"
+        >
+          Yuborish
+        </button>
+      </form>
+
+      {success && (
+        <p className="text-center text-green-600 mt-2 text-sm sm:text-base">
+          Xabaringiz muvaffaqiyatli yuborildi!
+        </p>
+      )}
+
+      <p className="text-center text-xs text-gray-500 mt-4">
+        Odatda 24 soat ichida javob beraman
+      </p>
+    </main>
   );
 }

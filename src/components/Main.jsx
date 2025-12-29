@@ -1,11 +1,10 @@
-// src/components/Main.jsx
 import React from "react";
-import profile from "../assets/personal.jpeg"; // O'z rasmiingni qo'y
+import profile from "../assets/personal.jpeg";
 import { Link } from "react-router-dom";
 
 export default function Main() {
   return (
-    <main className="max-w-3xl mx-auto pt-24 px-6">
+    <main className="max-w-3xl mx-auto pt-24 px-4 sm:px-6">
       {/* Grid fon */}
       <div className="fixed inset-0 -z-10 bg-[url('/src/assets/grid.svg')] opacity-40"></div>
 
@@ -14,14 +13,14 @@ export default function Main() {
         <img
           src={profile}
           alt="Dostonbek"
-          className="w-40 h-40 rounded-full object-cover shadow"
+          className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow"
         />
 
-        <h1 className="mt-6 text-3xl font-semibold text-gray-900">
+        <h1 className="mt-5 text-2xl sm:text-3xl font-semibold text-gray-900">
           Dostonbek Solijonov
         </h1>
 
-        <p className="text-lg text-blue-700 font-medium mt-1">
+        <p className="text-base sm:text-lg text-blue-700 font-medium mt-1">
           Frontend dasturchi
         </p>
 
@@ -40,7 +39,7 @@ export default function Main() {
       </div>
 
       {/* Matn */}
-      <p className="mt-6 text-[17px] leading-[26px] text-gray-700 text-center">
+      <p className="mt-6 text-[15px] sm:text-[17px] leading-[24px] sm:leading-[26px] text-gray-700 text-center">
         Men kod yozishni nafaqat ish deb bilaman, balki{" "}
         <span className="bg-yellow-300 px-1 rounded">
           fikrlarimni hayotga aylantirish
@@ -52,25 +51,44 @@ export default function Main() {
         qaratilgan kichik qadamdir.
       </p>
 
-      {/* Buttonlar */}
-      <div className="flex items-center justify-center gap-4 mt-8">
+      {/* BUTTONLAR — MOBILE OPTIMIZED */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8">
         <a
           href="#"
-          className="px-6 py-3 bg-black text-white rounded-full shadow hover:bg-gray-800 transition"
+          className="
+            px-5 py-2.5
+            text-sm
+            bg-black text-white
+            rounded-full
+            shadow
+            hover:bg-gray-800
+            transition
+            w-full sm:w-auto
+            text-center
+          "
         >
           Haqimda
         </a>
 
         <Link
           to="/skills"
-          className="px-6 py-3 border border-black rounded-full hover:bg-black hover:text-white transition"
+          className="
+            px-5 py-2.5
+            text-sm
+            border border-black
+            rounded-full
+            hover:bg-black hover:text-white
+            transition
+            w-full sm:w-auto
+            text-center
+          "
         >
-          Ko'nikmalar Va Vositalar
+          Ko‘nikmalar va vositalar
         </Link>
       </div>
 
       {/* Footer */}
-      <footer className="text-center text-gray-500 text-sm mt-16 pb-10">
+      <footer className="text-center text-gray-500 text-xs sm:text-sm mt-16 pb-10">
         © 2025 soliyev.uz
       </footer>
     </main>
