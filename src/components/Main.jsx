@@ -29,7 +29,7 @@ export default function Main() {
         <div className="flex gap-4 mt-4">
           {/* GitHub */}
           <a
-            href="https://github.com/USERNAME"
+            href="https://github.com/soliyevdoston"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
