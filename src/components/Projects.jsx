@@ -10,7 +10,6 @@ import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
 const tabs = [
   { id: "glass", label: "Glass 3D Cards" },
-
   { id: "masonry", label: "Masonry Grid" },
 ];
 
@@ -136,7 +135,6 @@ export default function Projects() {
         {/* Content */}
         <section>
           {active === "glass" && <GlassCards projects={SAMPLE} />}
-          {active === "timeline" && <TimelineProjects projects={SAMPLE} />}
           {active === "masonry" && <MasonryGrid projects={SAMPLE} />}
         </section>
       </div>
