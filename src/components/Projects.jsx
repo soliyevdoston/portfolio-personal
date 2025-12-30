@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import GlassCards from "./projects/GlassCards";
 import MasonryGrid from "./projects/MasonryGrid";
-import FerTeachImg from "../assets/ferteach.png";
+import FerTeachImg from "../assets/Ferteach.png";
 import PasswordImg from "../assets/PASSWORD2.png";
 import Dictionary from "../assets/dictionary.png";
 import Contextstore from "../assets/contextstore.png";
