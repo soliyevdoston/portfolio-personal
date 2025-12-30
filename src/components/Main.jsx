@@ -132,7 +132,7 @@ export default function Main() {
         </Link>
 
         <Link
-          to="/contact"
+          to="/projects"
           className="
             px-5 py-2.5
             text-sm
@@ -144,7 +144,7 @@ export default function Main() {
             text-center
           "
         >
-          Bog'lanish
+          Kichik qadamlar
         </Link>
       </div>
 

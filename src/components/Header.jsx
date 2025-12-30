@@ -7,6 +7,7 @@ export default function Header() {
   const navLinks = [
     { to: "/", label: "Bosh sahifa" },
     { to: "/projects", label: "Loyihalar" },
+    { to: "/contact", label: "Bog'lanish" },
     { to: "/skills", label: "Texnalogiyalar" },
   ];
 

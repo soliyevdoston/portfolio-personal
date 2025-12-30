@@ -1,19 +1,26 @@
-// src/components/VerticalFullScreenSlider.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function VerticalFullScreenSlider({ projects }) {
   const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState("down"); // yo'nalishni saqlash
+  const [direction, setDirection] = useState("down");
+
   const isAnimating = useRef(false);
   const lastActionTime = useRef(0);
   const touchStartY = useRef(0);
+
+  /* BODY SCROLLNI BLOKLASH */
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => (document.body.style.overflow = original);
+  }, []);
 
   const changeSlide = (dir) => {
     if (isAnimating.current) return;
 
     const now = Date.now();
-    if (now - lastActionTime.current < 900) return; // tezlikni cheklash
+    if (now - lastActionTime.current < 650) return;
 
     lastActionTime.current = now;
     isAnimating.current = true;
@@ -27,126 +34,149 @@ export default function VerticalFullScreenSlider({ projects }) {
 
     setTimeout(() => {
       isAnimating.current = false;
-    }, 900); // animatsiya davomiyligi bilan mos
+    }, 550);
   };
 
-  // Desktop scroll
+  /* MOUSE */
   useEffect(() => {
     const handleWheel = (e) => {
-      if (Math.abs(e.deltaY) < 20) return;
+      e.preventDefault();
+      if (Math.abs(e.deltaY) < 30) return;
       changeSlide(e.deltaY > 0 ? "down" : "up");
     };
-    window.addEventListener("wheel", handleWheel, { passive: true });
+
+    window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
   }, []);
 
-  // Mobile swipe
+  /* KEYBOARD */
   useEffect(() => {
-    const handleTouchStart = (e) =>
-      (touchStartY.current = e.touches[0].clientY);
-    const handleTouchEnd = (e) => {
+    const handleKey = (e) => {
+      if (e.key === "ArrowDown") changeSlide("down");
+      if (e.key === "ArrowUp") changeSlide("up");
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
+  /* TOUCH */
+  useEffect(() => {
+    const start = (e) => (touchStartY.current = e.touches[0].clientY);
+    const end = (e) => {
       const diff = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 50) return;
+      if (Math.abs(diff) < 60) return;
       changeSlide(diff > 0 ? "down" : "up");
     };
-    window.addEventListener("touchstart", handleTouchStart);
-    window.addEventListener("touchend", handleTouchEnd);
+
+    window.addEventListener("touchstart", start);
+    window.addEventListener("touchend", end);
     return () => {
-      window.removeEventListener("touchstart", handleTouchStart);
-      window.removeEventListener("touchend", handleTouchEnd);
+      window.removeEventListener("touchstart", start);
+      window.removeEventListener("touchend", end);
     };
   }, []);
 
-  // Animatsiya variantlari
   const variants = {
     enter: (dir) => ({
-      y: dir === "down" ? 60 : -60,
+      y: dir === "down" ? 100 : -100,
       opacity: 0,
-      scale: 0.95,
+      scale: 0.97,
     }),
-    center: { y: 0, opacity: 1, scale: 1 },
+    center: {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.55, ease: "easeOut" },
+    },
     exit: (dir) => ({
-      y: dir === "down" ? -60 : 60,
+      y: dir === "down" ? -100 : 100,
       opacity: 0,
-      scale: 0.95,
+      scale: 0.97,
+      transition: { duration: 0.35, ease: "easeIn" },
     }),
   };
 
   return (
-    <div className="relative w-full min-h-screen overflow-hidden bg-gray-100">
+    <div className="relative w-full h-screen overflow-hidden bg-gray-100">
+      {/* PROGRESS */}
+      <div className="absolute right-5 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+        {projects.map((_, i) => (
+          <span
+            key={i}
+            className={`w-2 h-2 rounded-full ${
+              i === index ? "bg-black scale-125" : "bg-gray-400"
+            }`}
+          />
+        ))}
+      </div>
+
       <AnimatePresence initial={false} custom={direction}>
-        {projects.map(
-          (p, i) =>
-            i === index && (
-              <motion.div
-                key={p.id}
-                custom={direction}
-                variants={variants}
-                initial="enter"
-                animate="center"
-                exit="exit"
-                transition={{ type: "spring", stiffness: 120, damping: 25 }}
-                className="absolute inset-0 flex flex-col items-center"
-              >
-                {/* IMAGE */}
-                <div className="mt-[12vh] w-full flex justify-center px-4">
-                  <img
-                    src={p.image}
-                    alt={p.title}
-                    className="w-full max-w-5xl max-h-[55vh] object-contain rounded-3xl shadow-2xl"
-                  />
-                </div>
+        <motion.div
+          key={index}
+          custom={direction}
+          variants={variants}
+          initial="enter"
+          animate="center"
+          exit="exit"
+          className="absolute inset-0 flex flex-col items-center"
+        >
+          {/* IMAGE */}
+          <div className="mt-[3vh] w-full flex justify-center px-4">
+            <img
+              src={projects[index].image}
+              alt={projects[index].title}
+              className="w-full max-w-5xl max-h-[55vh] object-contain rounded-3xl shadow-2xl"
+            />
+          </div>
 
-                {/* INFO CARD */}
-                <div className="mt-6 w-full max-w-5xl bg-white rounded-2xl shadow-xl px-5 py-4 mx-4 flex flex-col gap-3">
-                  <div className="flex flex-col sm:flex-row sm:justify-between">
-                    <h2 className="text-xl sm:text-2xl font-bold">{p.title}</h2>
-                    <span className="text-sm text-gray-500">
-                      {p.startYear} / {p.endYear}
-                    </span>
-                  </div>
+          {/* INFO CARD */}
+          <div className="mt-4 w-full max-w-5xl bg-white rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2">
+            <div className="flex flex-col sm:flex-row sm:justify-between">
+              <h2 className="text-xl sm:text-2xl font-bold">
+                {projects[index].title}
+              </h2>
+              <span className="text-sm text-gray-500">
+                {projects[index].startYear} / {projects[index].endYear}
+              </span>
+            </div>
 
-                  <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                    {p.minDescription || p.description}
-                  </p>
+            <p className="text-gray-700 text-sm sm:text-base">
+              {projects[index].minDescription || projects[index].description}
+            </p>
 
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map((t, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-xs sm:text-sm bg-black text-white rounded-full"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+            <div className="flex flex-wrap gap-2">
+              {projects[index].tags.map((t, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 text-xs bg-black text-white rounded-full"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
 
-                  <div className="flex flex-col sm:flex-row gap-3">
-                    {p.github && (
-                      <a
-                        href={p.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 border border-black rounded-xl py-2 text-center hover:bg-black hover:text-white transition"
-                      >
-                        GitHub
-                      </a>
-                    )}
-                    {p.demo && (
-                      <a
-                        href={p.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 bg-black text-white rounded-xl py-2 text-center hover:opacity-90 transition"
-                      >
-                        {p.title}
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            )
-        )}
+            <div className="flex flex-col sm:flex-row gap-3 mt-1">
+              {projects[index].github && (
+                <a
+                  href={projects[index].github}
+                  target="_blank"
+                  className="flex-1 border border-black rounded-xl py-2 text-center hover:bg-black hover:text-white transition"
+                >
+                  GitHub 🔗
+                </a>
+              )}
+              {projects[index].demo && (
+                <a
+                  href={projects[index].demo}
+                  target="_blank"
+                  className="flex-1 bg-black text-white rounded-xl py-2 text-center hover:opacity-90 transition"
+                >
+                  {projects[index].title} →
+                </a>
+              )}
+            </div>
+          </div>
+        </motion.div>
       </AnimatePresence>
     </div>
   );

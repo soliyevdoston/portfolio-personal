@@ -9,8 +9,8 @@ import Contextstore from "../assets/contextstore.png";
 import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
 const tabs = [
-  { id: "glass", label: "Glass 3D Cards" },
-  { id: "masonry", label: "Masonry Grid" },
+  { id: "glass", label: "Scroll rejimi" },
+  { id: "masonry", label: "Grid rejimi" },
 ];
 
 // sample projects (o'zingiz real ma'lumot bilan almashtiring)
