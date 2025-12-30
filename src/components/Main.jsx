@@ -1,6 +1,7 @@
 import React from "react";
 import profile from "../assets/personal.jpeg";
 import { Link } from "react-router-dom";
+import { FaGithub, FaEnvelope, FaFileAlt } from "react-icons/fa";
 
 export default function Main() {
   return (
@@ -25,15 +26,75 @@ export default function Main() {
         </p>
 
         {/* Icons */}
-        <div className="flex gap-4 mt-4 text-xl">
-          <a className="hover:text-black transition" href="#">
-            📘
+        <div className="flex gap-4 mt-4">
+          {/* GitHub */}
+          <a
+            href="https://github.com/USERNAME"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="
+      p-3 
+      rounded-xl 
+      border 
+      border-gray-700 
+      bg-white/60 
+      backdrop-blur-md 
+      text-gray-800 
+      text-xl
+      hover:text-black 
+      hover:border-black 
+      hover:scale-110 
+      transition-all
+    "
+          >
+            <FaGithub />
           </a>
-          <a className="hover:text-black transition" href="#">
-            💻
+
+          {/* Email */}
+          <a
+            href="mailto:solijonovd97@gmail.com"
+            aria-label="Email"
+            className="
+      p-3 
+      rounded-xl 
+      border 
+      border-gray-700 
+      bg-white/60 
+      backdrop-blur-md 
+      text-gray-800 
+      text-xl
+      hover:text-black 
+      hover:border-black 
+      hover:scale-110 
+      transition-all
+    "
+          >
+            <FaEnvelope />
           </a>
-          <a className="hover:text-black transition" href="#">
-            📁
+
+          {/* Resume */}
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Resume"
+            className="
+      p-3 
+      rounded-xl 
+      border 
+      border-gray-700 
+      bg-white/60 
+      backdrop-blur-md 
+      text-gray-800 
+      text-xl
+      hover:text-black 
+      hover:border-black 
+      hover:scale-110 
+      transition-all
+    "
+          >
+            <FaFileAlt />
           </a>
         </div>
       </div>
@@ -53,8 +114,8 @@ export default function Main() {
 
       {/* BUTTONLAR — MOBILE OPTIMIZED */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mt-8">
-        <a
-          href="#"
+        <Link
+          to="/about"
           className="
             px-5 py-2.5
             text-sm
@@ -68,10 +129,10 @@ export default function Main() {
           "
         >
           Haqimda
-        </a>
+        </Link>
 
         <Link
-          to="/skills"
+          to="/contact"
           className="
             px-5 py-2.5
             text-sm
@@ -83,7 +144,7 @@ export default function Main() {
             text-center
           "
         >
-          Ko‘nikmalar va vositalar
+          Bog'lanish
         </Link>
       </div>
 

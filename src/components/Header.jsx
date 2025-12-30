@@ -5,11 +5,9 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   const navLinks = [
-    { to: "/", label: "Asosiy" },
+    { to: "/", label: "Bosh sahifa" },
     { to: "/projects", label: "Loyihalar" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact" },
-    { to: "/skills", label: "Skills" },
+    { to: "/skills", label: "Texnalogiyalar" },
   ];
 
   const linkStyle = ({ isActive }) =>

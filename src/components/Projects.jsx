@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import GlassCards from "./projects/GlassCards";
 import MasonryGrid from "./projects/MasonryGrid";
-
+import FerTeachImg from "../assets/Ferteach.png";
 const tabs = [
   { id: "glass", label: "Glass 3D Cards" },
 
@@ -21,10 +21,10 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/soliyevdoston/fer-tech",
     demo: "https://fer-teach.vercel.app/",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   {
-    id: 1,
+    id: 2,
     title: "Portfolio v122222222",
     minDescription: "Minimal React portfolio with animations.",
     description: "Minimal React portfolio with animations.",
@@ -33,10 +33,10 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   {
-    id: 1,
+    id: 3,
     title: "Portfolio v1333333",
     description: "Minimal React portfolio with animations.",
     startYear: 2023,
@@ -44,10 +44,10 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   {
-    id: 1,
+    id: 4,
     title: "Portfolio v1444444444",
     minDescription: "Minimal React portfolio with animations.",
     description: "Minimal React portfolio with animations.",
@@ -56,10 +56,10 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS", "Vite"],
     github: "https://github.com/username/portfolio-v1",
     demo: "https://username-v1.vercel.app",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   {
-    id: 2,
+    id: 5,
     title: "E-commerce UI5555555555",
     minDescription: "Product grid + cart UX with local storage.",
     description: "Product grid + cart UX with local storage.",
@@ -68,10 +68,10 @@ const SAMPLE = [
     tags: ["HTML", "CSS", "JS"],
     github: "https://github.com/username/ecommerce-ui",
     demo: "https://ecommerce-ui.netlify.app",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   {
-    id: 2,
+    id: 6,
     title: "E-commerce UI666666666",
     minDescription: "Product grid + cart UX with local storage.",
     description: "Product grid + cart UX with local storage.",
@@ -83,7 +83,7 @@ const SAMPLE = [
     image: "/src/assets/Ferteach.png",
   },
   {
-    id: 2,
+    id: 7,
     title: "E-commerce UI77777777",
     minDescription: "Product grid + cart UX with local storage.",
     description: "Product grid + cart UX with local storage.",
@@ -92,7 +92,7 @@ const SAMPLE = [
     tags: ["HTML", "CSS", "JS"],
     github: "https://github.com/username/ecommerce-ui",
     demo: "https://ecommerce-ui.netlify.app",
-    image: "/src/assets/Ferteach.png",
+    image: FerTeachImg,
   },
   // Shu tarzda boshqa loyihalarni qo‘shish mumkin
 ];
