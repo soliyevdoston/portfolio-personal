@@ -99,18 +99,7 @@ const SAMPLE = [
     demo: "https://countries.soliyev.uz",
     image: Countries,
   },
-  {
-    id: 7,
-    title: "E-commerce UI77777777",
-    minDescription: "Product grid + cart UX with local storage.",
-    description: "Product grid + cart UX with local storage.",
-    startYear: 2024,
-    endYear: 2024,
-    tags: ["HTML", "CSS", "JS"],
-    github: "https://github.com/username/ecommerce-ui",
-    demo: "https://ecommerce-ui.netlify.app",
-    image: FerTeachImg,
-  },
+
   // Shu tarzda boshqa loyihalarni qo‘shish mumkin
 ];
 
