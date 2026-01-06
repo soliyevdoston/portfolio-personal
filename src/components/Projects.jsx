@@ -8,6 +8,7 @@ import Dictionary from "../assets/dictionary.png";
 import Contextstore from "../assets/contextstore.png";
 import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
+import MemoryImg from "../assets/memory.png";
 const tabs = [
   { id: "glass", label: "Scroll rejimi" },
   { id: "masonry", label: "Grid rejimi" },
@@ -16,7 +17,21 @@ const tabs = [
 // sample projects (o'zingiz real ma'lumot bilan almashtiring)
 const SAMPLE = [
   {
-    id: 1,
+    id: 3,
+    title: "Memory Game",
+    minDescription:
+      "Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping va xotirangizni sinab ko‘ring!",
+    description:
+      " Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping va xotirangizni sinab ko‘ring!",
+    startYear: "02-01-2026",
+    endYear: "06-01-2026",
+    tags: ["HTML", "CSS", "JavaScript"],
+    github: "https://github.com/soliyevdoston/Memory",
+    demo: "https://memory-game.soliyev.uz",
+    image: MemoryImg,
+  },
+  {
+    id: 4,
     title: "Password Generator",
     minDescription:
       "Xavfsiz va kuchli parollarni bir necha soniyada yarating. Uzunlik, harflar, raqamlar va maxsus belgilarni tanlab, ishonchli parolga ega bo‘ling.",
@@ -29,7 +44,7 @@ const SAMPLE = [
     image: PasswordImg,
   },
   {
-    id: 2,
+    id: 5,
     title: "English Dictionary",
     minDescription:
       "Inglizcha so‘zlar va ularning ta’riflarini o‘z ichiga olgan lug‘at ilovasi.",
@@ -43,7 +58,7 @@ const SAMPLE = [
     image: Dictionary,
   },
   {
-    id: 3,
+    id: 6,
     title: "Context Store",
     description:
       "Mahsulotlarni ko‘rish, savatga qo‘shish va umumiy summani hisoblash imkonini beruvchi platforma.",
@@ -57,7 +72,7 @@ const SAMPLE = [
     image: Contextstore,
   },
   {
-    id: 4,
+    id: 1,
     title: "Online Test Platform",
     minDescription:
       "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan bo‘lib, o‘quvchilar, talabalar va o‘qituvchilar uchun qulay va samarali yechim hisoblanadi.",
@@ -71,7 +86,7 @@ const SAMPLE = [
     image: TestOnline,
   },
   {
-    id: 5,
+    id: 2,
     title: "Fer-Teach",
     minDescription:
       "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
@@ -85,7 +100,7 @@ const SAMPLE = [
     image: FerTeachImg,
   },
   {
-    id: 6,
+    id: 7,
     title: "Countries Information",
     minDescription:
       "Dunyo davlatlarining bayroqlari, poytaxtlari va aholisi haqidagi to‘liq va ishonchli ma’lumotlar jamlangan ta’limiy platforma.",
