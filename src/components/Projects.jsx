@@ -17,6 +17,34 @@ const tabs = [
 // sample projects (o'zingiz real ma'lumot bilan almashtiring)
 const SAMPLE = [
   {
+    id: 1,
+    title: "Online Test Platform",
+    minDescription:
+      "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan bo‘lib, o‘quvchilar, talabalar va o‘qituvchilar uchun qulay va samarali yechim hisoblanadi.",
+    description:
+      "Onlayn test platformasi — bilimlarni baholash va nazorat qilish uchun qulay yechim.",
+    startYear: "09-12-2025",
+    endYear: "15-12-2025",
+    tags: ["React", "TailwindCSS", "NodeJs"],
+    github: "https://github.com/soliyevdoston/Test-sayti",
+    demo: "https://www.testonlinee.uz",
+    image: TestOnline,
+  },
+  {
+    id: 2,
+    title: "Fer-Teach",
+    minDescription:
+      "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
+    description:
+      "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
+    startYear: "20-11-2025",
+    endYear: "24-11-2025",
+    tags: ["React", "TailwindCSS"],
+    github: "https://github.com/soliyevdoston/fer-tech",
+    demo: "https://ferteach.soliyev.uz",
+    image: FerTeachImg,
+  },
+  {
     id: 3,
     title: "Memory Game",
     minDescription:
@@ -71,34 +99,7 @@ const SAMPLE = [
     demo: "https://context-store.soliyev.uz",
     image: Contextstore,
   },
-  {
-    id: 1,
-    title: "Online Test Platform",
-    minDescription:
-      "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan bo‘lib, o‘quvchilar, talabalar va o‘qituvchilar uchun qulay va samarali yechim hisoblanadi.",
-    description:
-      "Onlayn test platformasi — bilimlarni baholash va nazorat qilish uchun qulay yechim.",
-    startYear: "09-12-2025",
-    endYear: "15-12-2025",
-    tags: ["React", "TailwindCSS", "NodeJs"],
-    github: "https://github.com/soliyevdoston/Test-sayti",
-    demo: "https://www.testonlinee.uz",
-    image: TestOnline,
-  },
-  {
-    id: 2,
-    title: "Fer-Teach",
-    minDescription:
-      "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
-    description:
-      "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
-    startYear: "20-11-2025",
-    endYear: "24-11-2025",
-    tags: ["React", "TailwindCSS"],
-    github: "https://github.com/soliyevdoston/fer-tech",
-    demo: "https://ferteach.soliyev.uz",
-    image: FerTeachImg,
-  },
+
   {
     id: 7,
     title: "Countries Information",
