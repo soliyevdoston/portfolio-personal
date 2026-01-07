@@ -14,7 +14,7 @@ export default function SkillsToolsCompact() {
   ];
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center px-4 py-12">
+    <main className="min-h-screen  flex flex-col items-center px-4 py-12">
       <h2 className="text-xl sm:text-2xl font-semibold mb-8 text-center text-gray-900">
         Ko‘nikmalar va Vositalar
       </h2>

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function ProjectsShowcase({ projects }) {
   return (
-    <div className="relative w-full py-20 flex flex-wrap justify-center gap-8 px-6 bg-white">
+    <div className="relative w-full py-20 flex flex-wrap justify-center gap-8 px-6 ">
       {projects.map((p, index) => (
         <div
           key={index}

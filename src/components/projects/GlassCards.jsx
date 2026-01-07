@@ -97,13 +97,24 @@ export default function VerticalFullScreenSlider({ projects }) {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-gray-100">
+    <div className="relative w-full h-screen overflow-hidden ">
       {/* PROGRESS */}
-      <div className="absolute right-5 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-20">
+      <div
+        className="
+    fixed z-50
+    bottom-4 left-1/2 -translate-x-1/2
+    flex flex-row gap-3
+    lg:absolute
+    lg:right-5 lg:top-1/2
+    lg:left-auto lg:bottom-auto
+    lg:-translate-x-0 lg:-translate-y-1/2
+    lg:flex-col
+  "
+      >
         {projects.map((_, i) => (
           <span
             key={i}
-            className={`w-2 h-2 rounded-full ${
+            className={`w-2.5 h-2.5 rounded-full transition-all ${
               i === index ? "bg-black scale-125" : "bg-gray-400"
             }`}
           />
@@ -121,7 +132,7 @@ export default function VerticalFullScreenSlider({ projects }) {
           className="absolute inset-0 flex flex-col items-center"
         >
           {/* IMAGE */}
-          <div className="mt-[3vh] w-full flex justify-center px-4">
+          <div className="mt-[3vh] w-full flex justify-center px-4 ">
             <img
               src={projects[index].image}
               alt={projects[index].title}

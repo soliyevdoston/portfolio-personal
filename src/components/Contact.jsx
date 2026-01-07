@@ -74,7 +74,7 @@ Xabar: ${message}
   };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col items-center px-4 py-8 gap-8">
+    <main className="min-h-screen  flex flex-col items-center px-4 py-8 gap-8">
       <div className="text-center max-w-md">
         <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900">
           Bog‘lanish
