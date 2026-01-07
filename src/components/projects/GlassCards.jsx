@@ -16,6 +16,7 @@ export default function VerticalFullScreenSlider({ projects }) {
     return () => (document.body.style.overflow = original);
   }, []);
 
+  /* SLIDE O'ZGARTIRISH */
   const changeSlide = (dir) => {
     if (isAnimating.current) return;
 
@@ -23,21 +24,22 @@ export default function VerticalFullScreenSlider({ projects }) {
     if (now - lastActionTime.current < 650) return;
 
     lastActionTime.current = now;
+
+    // Oxirgi va birinchi slide’da to‘xtash
+    if (dir === "down" && index === projects.length - 1) return;
+    if (dir === "up" && index === 0) return;
+
     isAnimating.current = true;
     setDirection(dir);
 
-    setIndex((prev) =>
-      dir === "down"
-        ? (prev + 1) % projects.length
-        : (prev - 1 + projects.length) % projects.length
-    );
+    setIndex((prev) => (dir === "down" ? prev + 1 : prev - 1));
 
     setTimeout(() => {
       isAnimating.current = false;
     }, 550);
   };
 
-  /* MOUSE */
+  /* MOUSE WHEEL */
   useEffect(() => {
     const handleWheel = (e) => {
       e.preventDefault();
@@ -47,7 +49,7 @@ export default function VerticalFullScreenSlider({ projects }) {
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, []);
+  }, [index]);
 
   /* KEYBOARD */
   useEffect(() => {
@@ -57,7 +59,7 @@ export default function VerticalFullScreenSlider({ projects }) {
     };
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, []);
+  }, [index]);
 
   /* TOUCH */
   useEffect(() => {
@@ -74,8 +76,9 @@ export default function VerticalFullScreenSlider({ projects }) {
       window.removeEventListener("touchstart", start);
       window.removeEventListener("touchend", end);
     };
-  }, []);
+  }, [index]);
 
+  /* ANIMATSION VARIANTLAR */
   const variants = {
     enter: (dir) => ({
       y: dir === "down" ? 100 : -100,
@@ -97,24 +100,20 @@ export default function VerticalFullScreenSlider({ projects }) {
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden ">
-      {/* PROGRESS */}
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* PROGRESS NUQTALAR (desktop lg ≥1024px) */}
       <div
         className="
-    fixed z-50
-    bottom-4 left-1/2 -translate-x-1/2
-    flex flex-row gap-3
-    lg:absolute
-    lg:right-5 lg:top-1/2
-    lg:left-auto lg:bottom-auto
-    lg:-translate-x-0 lg:-translate-y-1/2
-    lg:flex-col
-  "
+          hidden
+          lg:flex
+          absolute right-5 top-1/2 -translate-y-1/2
+          flex-col gap-3 z-20
+        "
       >
         {projects.map((_, i) => (
           <span
             key={i}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
+            className={`w-2 h-2 rounded-full transition-all ${
               i === index ? "bg-black scale-125" : "bg-gray-400"
             }`}
           />
@@ -132,7 +131,7 @@ export default function VerticalFullScreenSlider({ projects }) {
           className="absolute inset-0 flex flex-col items-center"
         >
           {/* IMAGE */}
-          <div className="mt-[3vh] w-full flex justify-center px-4 ">
+          <div className="mt-[3vh] w-full flex justify-center px-4">
             <img
               src={projects[index].image}
               alt={projects[index].title}
