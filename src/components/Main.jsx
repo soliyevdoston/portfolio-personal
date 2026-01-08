@@ -2,7 +2,8 @@ import React from "react";
 import profile from "../assets/personal.jpeg";
 import { Link } from "react-router-dom";
 import { FaGithub, FaEnvelope, FaFileAlt } from "react-icons/fa";
-
+import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
+import { Highlighter } from "@/components/ui/highlighter";
 export default function Main() {
   return (
     <main className="max-w-3xl mx-auto pt-24 px-4 sm:px-6">
@@ -101,15 +102,17 @@ export default function Main() {
 
       {/* Matn */}
       <p className="mt-6 text-[15px] sm:text-[17px] leading-[24px] sm:leading-[26px] text-gray-700 text-center">
-        Men kod yozishni nafaqat ish deb bilaman, balki{" "}
-        <span className="bg-yellow-300 px-1 rounded">
-          fikrlarimni hayotga aylantirish
-        </span>{" "}
-        san’ati sifatida qabul qilaman. Har bir loyiha –{" "}
-        <span className="underline decoration-blue-400">
-          odamlar hayotini yengillashtirishga
-        </span>{" "}
-        qaratilgan kichik qadamdir.
+        Ba’zi{" "}
+        <Highlighter action="underline" color="#fb0606">
+          {" "}
+          muammolar{" "}
+        </Highlighter>{" "}
+        yillar davomida javobsiz qoladi. Men to‘g‘ri savol va bir nechta qator
+        kod bilan hammasini
+        <Highlighter action="highlight" color="rgb(240, 150, 104)">
+          o‘zgartirishim{" "}
+        </Highlighter>
+        mumkin.
       </p>
 
       {/* BUTTONLAR — MOBILE OPTIMIZED */}
@@ -130,22 +133,9 @@ export default function Main() {
         >
           Haqimda
         </Link>
-
-        <Link
-          to="/projects"
-          className="
-            px-5 py-2.5
-            text-sm
-            border border-black
-            rounded-full
-            hover:bg-black hover:text-white
-            transition
-            w-full sm:w-auto
-            text-center
-          "
-        >
-          Kichik qadamlar
-        </Link>
+        <InteractiveHoverButton>
+          <Link to="/projects">Kichik qadamlar</Link>
+        </InteractiveHoverButton>
       </div>
 
       {/* Footer */}

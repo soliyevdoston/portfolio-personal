@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import { BorderBeam } from "@/components/ui/border-beam";
 export default function VerticalFullScreenSlider({ projects }) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState("down");
@@ -140,7 +140,7 @@ export default function VerticalFullScreenSlider({ projects }) {
           </div>
 
           {/* INFO CARD */}
-          <div className="mt-4 w-full max-w-5xl bg-white rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2">
+          <div className="relative mt-4 w-full max-w-5xl bg-white rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2">
             <div className="flex flex-col sm:flex-row sm:justify-between">
               <h2 className="text-xl sm:text-2xl font-bold">
                 {projects[index].title}
@@ -165,6 +165,9 @@ export default function VerticalFullScreenSlider({ projects }) {
               ))}
             </div>
 
+            {/* BORDER BEAM: placed in its own div below the tags */}
+            <div className="mt-3"></div>
+
             <div className="flex flex-col sm:flex-row gap-3 mt-1">
               {projects[index].github && (
                 <a
@@ -185,6 +188,7 @@ export default function VerticalFullScreenSlider({ projects }) {
                 </a>
               )}
             </div>
+            <BorderBeam />
           </div>
         </motion.div>
       </AnimatePresence>

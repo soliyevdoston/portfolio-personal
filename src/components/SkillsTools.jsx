@@ -9,7 +9,7 @@ export default function SkillsToolsCompact() {
     { name: "React", level: 70 },
     { name: "Next.js", level: 70 },
     { name: "TypeScript", level: 65 },
-    { name: "React Notion", level: 60 },
+
     { name: "Git/GitHub", level: 80 },
   ];
 

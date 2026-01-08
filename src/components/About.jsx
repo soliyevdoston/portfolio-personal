@@ -1,18 +1,17 @@
 import React from "react";
 import { motion } from "framer-motion";
-
+import { Meteors } from "@/components/ui/meteors";
 export default function About() {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center bg-white px-6">
+    <section className="relative h-[500px] w-full overflow-hidden min-h-screen w-full flex items-center justify-center  px-6">
+      <Meteors />
+
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-4xl w-full"
       >
-        {/* TITLE */}
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8">About me</h1>
-
         {/* MAIN TEXT */}
         <div className="space-y-6 text-gray-800 text-base sm:text-lg leading-relaxed">
           <p className="text-xl sm:text-2xl font-medium text-black">
