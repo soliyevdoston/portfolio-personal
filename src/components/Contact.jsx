@@ -35,8 +35,8 @@ export default function ContactCompact() {
     },
     {
       icon: <FaInstagram />,
-      label: "@username",
-      link: "https://instagram.com/username",
+      label: "@soloiyev_web",
+      link: "https://instagram.com/soliyev_web",
     },
   ];
 

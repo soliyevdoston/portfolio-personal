@@ -109,7 +109,7 @@ export default function Main() {
         </Highlighter>{" "}
         yillar davomida javobsiz qoladi. Men to‘g‘ri savol va bir nechta qator
         kod bilan hammasini
-        <Highlighter action="highlight" color="rgb(240, 150, 104)">
+        <Highlighter action="highlight" color="rgb(235, 102, 35)">
           o‘zgartirishim{" "}
         </Highlighter>
         mumkin.
