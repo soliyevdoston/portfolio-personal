@@ -1,7 +1,8 @@
-// src/components/Projects.jsx
 import React, { useState } from "react";
 import GlassCards from "./projects/GlassCards";
 import MasonryGrid from "./projects/MasonryGrid";
+
+// Rasmlar (importlarni saqlab qoldik)
 import FerTeachImg from "../assets/Ferteach.png";
 import PasswordImg from "../assets/PASSWORD2.png";
 import Dictionary from "../assets/dictionary.png";
@@ -9,18 +10,18 @@ import Contextstore from "../assets/contextstore.png";
 import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
 import MemoryImg from "../assets/memory.png";
+
 const tabs = [
   { id: "glass", label: "Scroll rejimi" },
   { id: "masonry", label: "Grid rejimi" },
 ];
 
-// sample projects (o'zingiz real ma'lumot bilan almashtiring)
 const SAMPLE = [
   {
     id: 1,
     title: "Online Test Platform",
     minDescription:
-      "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan bo‘lib, o‘quvchilar, talabalar va o‘qituvchilar uchun qulay va samarali yechim hisoblanadi.",
+      "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan.",
     description:
       "Onlayn test platformasi — bilimlarni baholash va nazorat qilish uchun qulay yechim.",
     startYear: "09-12-2025",
@@ -48,9 +49,9 @@ const SAMPLE = [
     id: 3,
     title: "Memory Game",
     minDescription:
-      "Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping va xotirangizni sinab ko‘ring!",
+      "Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping!",
     description:
-      " Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping va xotirangizni sinab ko‘ring!",
+      "Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping!",
     startYear: "02-01-2026",
     endYear: "06-01-2026",
     tags: ["HTML", "CSS", "JavaScript"],
@@ -61,8 +62,7 @@ const SAMPLE = [
   {
     id: 4,
     title: "Password Generator",
-    minDescription:
-      "Xavfsiz va kuchli parollarni bir necha soniyada yarating. Uzunlik, harflar, raqamlar va maxsus belgilarni tanlab, ishonchli parolga ega bo‘ling.",
+    minDescription: "Xavfsiz va kuchli parollarni bir necha soniyada yarating.",
     description: "Xavfsizlik va qulaylik uchun parol generatori.",
     startYear: "24-12-2025",
     endYear: "26-12-2025",
@@ -88,10 +88,10 @@ const SAMPLE = [
   {
     id: 6,
     title: "Context Store",
-    description:
-      "Mahsulotlarni ko‘rish, savatga qo‘shish va umumiy summani hisoblash imkonini beruvchi platforma.",
     minDescription:
-      "ContextStore — mahsulotlarni ko‘rish, savatga qo‘shish, o‘chirish va umumiy summani avtomatik hisoblash imkonini beruvchi platforma.",
+      "ContextStore — mahsulotlarni savatga qo‘shish va avtomatik hisoblash platformasi.",
+    description:
+      "ContextStore — mahsulotlarni savatga qo‘shish va avtomatik hisoblash platformasi.",
     startYear: "01-11-2025",
     endYear: "05-11-2025",
     tags: ["React", "CSS", "Vite"],
@@ -99,14 +99,12 @@ const SAMPLE = [
     demo: "https://context-store.soliyev.uz",
     image: Contextstore,
   },
-
   {
     id: 7,
     title: "Countries Information",
     minDescription:
-      "Dunyo davlatlarining bayroqlari, poytaxtlari va aholisi haqidagi to‘liq va ishonchli ma’lumotlar jamlangan ta’limiy platforma.",
-    description:
-      "Dunyo davlatlari haqida ma'lumotlar. Nomi, aholisi, va poytaxti haqida ishonchli ma'lumotlar",
+      "Dunyo davlatlarining bayroqlari, poytaxtlari va aholisi haqida platforma.",
+    description: "Dunyo davlatlari haqida ma'lumotlar platformasi.",
     startYear: "08-11-2025",
     endYear: "10-11-2025",
     tags: ["React", "TailwindCSS"],
@@ -114,33 +112,36 @@ const SAMPLE = [
     demo: "https://countries.soliyev.uz",
     image: Countries,
   },
-
-  // Shu tarzda boshqa loyihalarni qo‘shish mumkin
 ];
 
 export default function Projects() {
   const [active, setActive] = useState("glass");
 
   return (
-    <main className="min-h-screen  pb-8  ">
-      <div className=" mx-auto">
-        <header className="max-w-6xl mx-auto pb-[10px] flex flex-col sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">Loyihalar</h1>
+    <main className="min-h-screen  dark:bg-[#09090b] transition-colors duration-500  px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto  ">
+        {/* Header Section */}
+        <header className="flex flex-col sm:flex-row sm:items-end sm:justify-between ">
+          <div className="space-y-2">
+            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-zinc-100">
+              Loyihalar
+            </h1>
+            <p className="text-zinc-500 dark:text-zinc-400 text-sm sm:text-base max-w-md">
+              Frontend yo‘nalishida yaratgan ilovalarim.
+            </p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex gap-3 mt-4 sm:mt-0">
+          {/* Tab Switcher (Modern Pill Style) */}
+          <div className="flex p-1 bg-gray-100 dark:bg-zinc-900/50 backdrop-blur-md rounded-2xl w-fit border border-gray-200 dark:border-zinc-800">
             {tabs.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setActive(t.id)}
-                className={`px-4 py-2 rounded-full font-medium transition
-          ${
-            active === t.id
-              ? "bg-black text-white shadow-lg"
-              : "bg-white border"
-          }`}
+                className={`px-6 py-2 text-sm font-semibold rounded-xl transition-all duration-300 ${
+                  active === t.id
+                    ? "bg-white dark:bg-zinc-800 text-black dark:text-white shadow-md"
+                    : "text-gray-500 dark:text-zinc-500 hover:text-gray-900 dark:hover:text-zinc-200"
+                }`}
               >
                 {t.label}
               </button>
@@ -148,10 +149,18 @@ export default function Projects() {
           </div>
         </header>
 
-        {/* Content */}
-        <section>
-          {active === "glass" && <GlassCards projects={SAMPLE} />}
-          {active === "masonry" && <MasonryGrid projects={SAMPLE} />}
+        {/* Content Section */}
+        <section className="relative">
+          {active === "glass" && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <GlassCards projects={SAMPLE} />
+            </div>
+          )}
+          {active === "masonry" && (
+            <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
+              <MasonryGrid projects={SAMPLE} />
+            </div>
+          )}
         </section>
       </div>
     </main>

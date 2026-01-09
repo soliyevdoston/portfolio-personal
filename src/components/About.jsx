@@ -12,7 +12,6 @@ export default function About() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="max-w-4xl w-full"
       >
-        {/* MAIN TEXT */}
         <div className="space-y-6 text-gray-800 text-base sm:text-lg leading-relaxed">
           <p className="text-xl sm:text-2xl font-medium text-black">
             Hammasi bitta savoldan boshlandi:
@@ -46,21 +45,17 @@ export default function About() {
           </p>
         </div>
 
-        {/* DIVIDER */}
         <div className="my-10 h-px bg-gray-200" />
 
-        {/* FOOTER QUOTE */}
         <motion.blockquote
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="text-gray-600 italic text-sm sm:text-base"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="mt-8 text-gray-500 dark:text-zinc-500 italic text-sm sm:text-base max-w-lg  leading-relaxed border-l-2 border-gray-200 dark:border-zinc-800 pl-4"
         >
-          “Kod — bu vosita. Natija — muhim. Foydalanuvchi — markazda.”
+          “Mukammallik — bu qo‘shadigan narsa qolmaganda emas, balki olib
+          tashlaydigan narsa qolmaganda erishiladi.”
         </motion.blockquote>
-
-        {/* SIGNATURE */}
-        <p className="mt-6 text-sm text-gray-500">— Dostonbek Solijonov</p>
       </motion.div>
     </section>
   );
