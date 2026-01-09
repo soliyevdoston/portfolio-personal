@@ -166,19 +166,19 @@ export default function VerticalFullScreenSlider({ projects }) {
                 </a>
               )}
               {projects[index].demo && (
-                <ShimmerButton className="flex-1">
-                  <a
-                    href={projects[index].demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full h-full flex items-center justify-center gap-2 text-sm"
-                  >
+                <a
+                  href={projects[index].demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1 "
+                >
+                  <ShimmerButton className="w-full h-full flex items-center justify-center gap-2 text-sm">
                     {projects[index].title}
                     <span className="transition-transform group-hover:translate-x-1">
                       →
                     </span>
-                  </a>
-                </ShimmerButton>
+                  </ShimmerButton>
+                </a>
               )}
             </div>
 

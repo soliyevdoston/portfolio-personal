@@ -81,20 +81,19 @@ export default function ProjectsShowcase({ projects }) {
               )}
 
               {p.demo && (
-                <ShimmerButton className="flex-1 rounded-xl">
-                  <a
-                    href={p.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full h-full flex items-center justify-center gap-2 text-sm font-bold"
-                  >
-                    <span>Demo</span>
-                    <FaExternalLinkAlt
-                      size={12}
-                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
-                    />
-                  </a>
-                </ShimmerButton>
+                <a
+                  href={p.demo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex-1"
+                >
+                  <ShimmerButton className="w-full">
+                    <div className="flex items-center justify-center gap-2 text-sm font-bold">
+                      <span className="whitespace-nowrap">{p.title}</span>
+                      <FaExternalLinkAlt size={12} />
+                    </div>
+                  </ShimmerButton>
+                </a>
               )}
             </div>
           </div>

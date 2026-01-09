@@ -4,7 +4,7 @@ import { Meteors } from "@/components/ui/meteors";
 
 export default function About() {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center px-6 bg-white dark:bg-[#09090b] transition-colors duration-500 overflow-hidden">
+    <section className="relative min-h-screen w-full flex items-center justify-center px-6  dark:bg-[#09090b] transition-colors duration-500 overflow-hidden">
       {/* Meteor effekti - Dark modeda yorqinroq ko'rinadi */}
       <Meteors number={20} />
 
