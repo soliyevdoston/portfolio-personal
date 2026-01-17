@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../assets/personal.jpeg";
+import profile from "../assets/personal.jpg";
 import { Link } from "react-router-dom";
 import { FaGithub, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
