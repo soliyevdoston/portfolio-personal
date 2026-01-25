@@ -10,6 +10,7 @@ import Contextstore from "../assets/contextstore.png";
 import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
 import MemoryImg from "../assets/memory.png";
+import Istiqbolluck from "../assets/istiqbolluck.png";
 
 const tabs = [
   { id: "glass", label: "Scroll rejimi" },
@@ -17,6 +18,20 @@ const tabs = [
 ];
 
 const SAMPLE = [
+  {
+    id: 0,
+    title: "Istiqbol Luck",
+    minDescription:
+      "Istiqbol Luck — xususiy maktab uchun ishlab chiqilgan zamonaviy rasmiy web sayt. ",
+    description:
+      "Istiqbol Luck — xususiy maktab uchun ishlab chiqilgan zamonaviy rasmiy web sayt. Sayt orqali maktab haqida umumiy ma’lumotlar, ta’lim yo‘nalishlari, o‘qituvchilar tarkibi va ichki test tizimi bilan tanishish mumkin.",
+    startYear: "10-01-2026",
+    endYear: "24-01-2026",
+    tags: ["React", "TailwindCSS"],
+    github: "https://github.com/soliyevdoston/istiqbolluck-v0.2",
+    demo: "https://www.istiqbolluck.uz/",
+    image: Istiqbolluck,
+  },
   {
     id: 1,
     title: "Online Test Platform",
