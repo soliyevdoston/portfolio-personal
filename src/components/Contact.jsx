@@ -122,13 +122,13 @@ export default function ContactCompact() {
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className="flex flex-col items-center p-4 rounded-2xl bg-white/60 dark:bg-zinc-900/50 backdrop-blur-xl border border-gray-200 dark:border-zinc-800 shadow-sm
-                       transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-xl hover:bg-white dark:hover:bg-zinc-800/80 group"
+            className="flex flex-col items-center p-4 rounded-2xl bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 shadow-sm
+                       transition-all duration-300 hover:scale-[1.03] hover:-translate-y-1 hover:shadow-lg hover:bg-white dark:hover:bg-zinc-700 group"
           >
-            <div className="text-xl sm:text-2xl mb-2 text-gray-800 dark:text-zinc-300 group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors">
+            <div className="text-xl sm:text-2xl mb-2 text-slate-700 dark:text-zinc-300 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {item.icon}
             </div>
-            <p className="font-medium text-[13px] sm:text-sm text-gray-900 dark:text-zinc-200 break-all text-center">
+            <p className="font-medium text-[13px] sm:text-sm text-slate-700 dark:text-zinc-200 break-all text-center group-hover:text-black dark:group-hover:text-white">
               {item.label}
             </p>
           </a>
@@ -136,7 +136,7 @@ export default function ContactCompact() {
       </div>
 
       {/* Divider */}
-      <div className="w-full max-w-2xl h-px bg-gray-200 dark:bg-zinc-800 z-10"></div>
+      <div className="w-full max-w-2xl h-px bg-slate-200 dark:bg-zinc-800 z-10"></div>
 
       {/* Form */}
       <form
@@ -149,14 +149,14 @@ export default function ContactCompact() {
             name="name"
             placeholder="Ismingiz"
             required
-            className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm border border-gray-300 dark:border-zinc-800 w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 transition-all"
+            className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
           />
           <input
             type="email"
             name="email"
             placeholder="Email"
             required
-            className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm border border-gray-300 dark:border-zinc-800 w-full px-4 py-2.5 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 transition-all"
+            className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
           />
         </div>
         <textarea
@@ -164,7 +164,7 @@ export default function ContactCompact() {
           rows="4"
           placeholder="Xabaringizni shu yerga yozing..."
           required
-          className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm border border-gray-300 dark:border-zinc-800 w-full px-4 py-2.5 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-gray-900 dark:text-zinc-100 placeholder:text-gray-400 dark:placeholder:text-zinc-500 transition-all"
+          className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
         />
         <div className="flex justify-center">
           <button
