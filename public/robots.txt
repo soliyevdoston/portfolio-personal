@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://soliyevdoston.uz/sitemap.xml
