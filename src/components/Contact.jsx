@@ -8,10 +8,9 @@ import {
   FaSms,
 } from "react-icons/fa";
 import { Globe } from "@/components/ui/globe";
+import { toast } from "sonner";
 
 export default function ContactCompact() {
-  const [success, setSuccess] = useState(false);
-
   const contacts = [
     {
       icon: <FaPhone />,
@@ -47,29 +46,58 @@ export default function ContactCompact() {
     const email = e.target.email.value;
     const message = e.target.message.value;
 
-    const botToken = "7449520976:AAHe_Ait9iP4Uj6WOfFOfNlYj73_BvD6X8o"; // O'z tokeningizni qo'ying
-    const chatId = "6571597816"; // O'z IDingizni qo'ying
+    const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
+    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
 
-    const text = `🚀 *Yangi xabar!*\n\n👤 *Ism:* ${name}\n📧 *Email:* ${email}\n📝 *Xabar:* ${message}`;
+    // Check if env vars are loaded
+    if (!botToken || !chatId) {
+      toast.error("Tizimda xatolik: Bot sozlamalari topilmadi.");
+      console.error("Telegram credentials missing properly.");
+      return;
+    }
+
+    const text = `
+<b>📬 Yangi Murojaat!</b>
+
+👤 <b>Foydalanuvchi:</b> ${name}
+📧 <b>Email:</b> ${email}
+
+📝 <b>Murojaat mazmuni:</b>
+<i>${message}</i>
+
+#portfolio #aloqa #contact
+    `;
 
     const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(
       text
-    )}&parse_mode=Markdown`;
+    )}&parse_mode=HTML`;
 
-    try {
-      const res = await fetch(url);
-      if (res.ok) {
-        setSuccess(true);
-        e.target.reset();
-        setTimeout(() => setSuccess(false), 5000); // 5 sekundan keyin xabarni o'chirish
+    const promise = fetch(url).then(async (res) => {
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error("Telegram API Error:", errorData);
+        throw new Error("Telegramga yuborishda xatolik");
       }
-    } catch (err) {
-      console.error("Xato:", err);
-    }
+      return res.json();
+    });
+
+    toast.promise(promise, {
+      loading: "Xabar yuborilmoqda... ⏳",
+      success: () => {
+        e.target.reset();
+        return "Xabaringiz muvaffaqiyatli yuborildi! ✅";
+      },
+      error: "Xatolik yuz berdi. Qaytadan urinib ko‘ring. ❌",
+      style: {
+        background: "#ffffff",
+        color: "#000000",
+        border: "1px solid #E5E7EB",
+      }, // Ensuring black/white style explicitly just in case
+    });
   };
 
   return (
-    <main className="relative min-h-screen  dark:bg-[#09090b] transition-colors duration-500 flex flex-col items-center px-4 py-8 gap-8 overflow-x-hidden">
+    <main className="relative min-h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] dark:bg-[#09090b] transition-colors duration-500 flex flex-col items-center justify-center px-4 py-8 sm:py-0 gap-8 sm:gap-4 overflow-y-auto sm:overflow-hidden">
       {/* Globe Background - Dark modeda xiraroq turadi */}
       <div className="absolute top-0 left-0 w-full h-full -z-0 opacity-80 dark:opacity-40 pointer-events-none">
         <Globe />
@@ -87,7 +115,7 @@ export default function ContactCompact() {
       </div>
 
       {/* Contact Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl z-10">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-4 w-full max-w-3xl z-10">
         {contacts.map((item, idx) => (
           <a
             key={idx}
@@ -147,12 +175,6 @@ export default function ContactCompact() {
           </button>
         </div>
       </form>
-
-      {success && (
-        <div className="fixed top-24 left-1/2 -translate-x-1/2 bg-green-500 text-white px-6 py-2 rounded-full shadow-2xl z-50 animate-bounce text-sm font-medium">
-          🚀 Xabaringiz yuborildi! Tez orada javob beraman.
-        </div>
-      )}
 
       <div className="flex flex-col items-center gap-1 mt-4">
         <p className="text-center text-x text-gray-500 dark:text-zinc-500 font-medium">

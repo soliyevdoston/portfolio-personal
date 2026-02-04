@@ -27,11 +27,12 @@ export default function ProjectsShowcase({ projects }) {
 
           {/* Image Wrapper */}
           {p.image && (
-            <div className="relative overflow-hidden rounded-2xl mb-5 shadow-inner">
+            <div className="relative h-44 w-full overflow-hidden rounded-2xl mb-5 shadow-inner bg-gray-200 dark:bg-zinc-800">
               <img
                 src={p.image}
                 alt={p.title}
-                className="w-full h-44 object-cover transform transition-transform duration-700 group-hover:scale-110"
+                className="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/5 dark:bg-black/20 group-hover:bg-transparent transition-colors"></div>
             </div>

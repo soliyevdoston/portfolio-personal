@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SmoothCursor } from "@/components/ui/smooth-cursor";
+import { Toaster } from "sonner";
 import Main from "./components/Main.jsx";
 import Projects from "./components/Projects.jsx";
 import Header from "./components/Header.jsx";
@@ -8,11 +9,12 @@ import Header from "./components/Header.jsx";
 import Contact from "./components/Contact.jsx";
 import About from "./components/About.jsx";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
-import bodyImg from "./assets/body2.svg";
+import bodyImg from "./assets/body.svg";
 
 export default function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-right" richColors theme="system" />
       <Header />
       <SmoothCursor />
 

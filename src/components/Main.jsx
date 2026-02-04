@@ -1,27 +1,28 @@
 import React from "react";
-import profile from "../assets/personal.jpg";
+import profile from "../assets/personal.JPG";
 import { Link } from "react-router-dom";
 import { FaGithub, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
 import { Highlighter } from "@/components/ui/highlighter";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
+
 export default function Main() {
   return (
-    <main className="min-h-screen transition-colors duration-500 dark:bg-[#09090b] selection:bg-blue-500/30">
-      <div className="max-w-3xl mx-auto pt-24 px-4 sm:px-6">
-        {/* Grid fon - Dark modeda xiraroq va ko'kroq tusda */}
-        <div className="fixed inset-0 -z-10 bg-[url('/src/assets/grid.svg')] opacity-40 dark:opacity-[0.15] dark:invert"></div>
+    <main className="h-[calc(100vh-80px)] overflow-hidden transition-colors duration-500 dark:bg-[#09090b] selection:bg-blue-500/30 flex flex-col relative">
+      {/* Grid fon - Dark modeda xiraroq va ko'kroq tusda */}
+      <div className="fixed inset-0 -z-10 bg-[url('/grid.svg')] opacity-40 dark:opacity-[0.15] dark:invert pointer-events-none"></div>
 
-        {/* Yuqoridagi gradient nur (Glow effect) faqat dark mode uchun */}
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-64 bg-blue-500/10 blur-[120px] -z-10 hidden dark:block"></div>
+      {/* Yuqoridagi gradient nur (Glow effect) faqat dark mode uchun */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-lg h-64 bg-blue-500/10 blur-[120px] -z-10 hidden dark:block pointer-events-none"></div>
 
+      <div className="flex-1 flex flex-col items-center justify-center w-full max-w-3xl mx-auto px-4 sm:px-6">
         {/* Rasm + ism */}
         <div className="flex flex-col items-center text-center">
           <div className="relative">
             <img
               src={profile}
               alt="Dostonbek"
-              className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover shadow-2xl border-2 border-transparent dark:border-white/10"
+              className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover shadow-2xl border-2 border-transparent dark:border-white/10"
             />
             {/* Dark modeda rasm atrofidagi kichik nur */}
             <div className="absolute inset-0 rounded-full shadow-[0_0_40px_rgba(59,130,246,0.2)] dark:block hidden"></div>
@@ -78,7 +79,7 @@ export default function Main() {
         </div>
 
         {/* Matn */}
-        <p className="mt-8 text-[16px] sm:text-[18px] leading-[26px] sm:leading-[28px] text-gray-700 dark:text-zinc-400 text-center max-w-2xl mx-auto">
+        <p className="mt-6 sm:mt-8 text-[15px] sm:text-[16px] leading-[24px] sm:leading-[26px] text-gray-700 dark:text-zinc-400 text-center max-w-2xl mx-auto">
           Ba’zi{" "}
           <Highlighter action="underline" color="#3b82f6">
             muammolar
@@ -92,9 +93,8 @@ export default function Main() {
         </p>
 
         {/* BUTTONLAR */}
-        <div className="flex flex-col min-[360px]:flex-row items-center justify-center gap-4 mt-10">
+        <div className="flex flex-col min-[360px]:flex-row items-center justify-center gap-4 mt-8 sm:mt-10 mb-8 sm:mb-0">
           {/* Haqimda tugmasi */}
-          {/* Haqimda tugmasi - Shimmer Button versiyasi */}
           <ShimmerButton className="w-full min-[360px]:w-auto ">
             <Link to="/about" className="block w-full h-full text-center">
               Haqimda
@@ -108,13 +108,13 @@ export default function Main() {
             </Link>
           </InteractiveHoverButton>
         </div>
-
-        {/* Footer */}
-        <footer className="text-center text-gray-500 dark:text-zinc-500 text-xs sm:text-sm mt-20 pb-10">
-          © 2026 soliyev.uz <br />
-          Barcha huquqlar himoyalangan.
-        </footer>
       </div>
+
+      {/* Footer - Pushed to bottom by flex-1 above */}
+      <footer className="w-full text-center text-gray-500 dark:text-zinc-600 text-xs sm:text-sm py-4">
+        © 2026 soliyev.uz <br />
+        Barcha huquqlar himoyalangan.
+      </footer>
     </main>
   );
 }
