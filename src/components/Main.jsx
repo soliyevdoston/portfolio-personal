@@ -1,5 +1,5 @@
 import React from "react";
-import profile from "../assets/personal.jpg";
+// import profile from "../assets/personal.jpg"; // Removed in favor of static public/personal.jpg for preloading
 import { Link } from "react-router-dom";
 import { FaGithub, FaEnvelope, FaFileAlt } from "react-icons/fa";
 import { InteractiveHoverButton } from "@/components/ui/interactive-hover-button";
@@ -20,7 +20,7 @@ export default function Main() {
         <div className="flex flex-col items-center text-center">
           <div className="relative">
             <img
-              src={profile}
+              src="/personal.jpg"
               alt="Dostonbek"
               className="w-28 h-28 sm:w-36 sm:h-36 rounded-full object-cover shadow-2xl border-2 border-transparent dark:border-white/10"
             />
