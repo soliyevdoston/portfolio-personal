@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Brand Logo: The "Play-D" -->
+  
+  <!-- Outer Container (App Icon Shape) - Black -->
+  <rect width="512" height="512" rx="120" fill="#000000" />
+  
+  <!-- The "D" Shape with Play Button Negative Space -->
+  <!-- A solid white block forming a D, but the hole is a triangle -->
+  <path d="M140 100 L300 100 C410 100 440 180 440 256 C440 332 410 412 300 412 L140 412 Z" 
+        fill="#ffffff" />
+        
+  <!-- The "Play" Triangle (Negative Space / Black Hole) -->
+  <path d="M260 256 L200 200 L200 312 Z" 
+        fill="#000000" />
+</svg>

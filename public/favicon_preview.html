@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favicon Variantlari (2-To'plam)</title>
+    <style>
+        body { font-family: sans-serif; background: #18181b; color: white; display: flex; flex-direction: column; align-items: center; padding: 40px; }
+        h1 { margin-bottom: 10px; }
+        p { color: #a1a1aa; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 30px; max-width: 1000px; width: 100%; }
+        .card { background: #27272a; padding: 20px; border-radius: 20px; text-align: center; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3); transition: transform 0.2s; cursor: pointer; border: 1px solid #3f3f46; }
+        .card:hover { transform: translateY(-5px); border-color: #3b82f6; }
+        .label { font-weight: bold; color: #e4e4e7; margin-bottom: 15px; display: block; font-size: 1.1em; }
+        .desc { font-size: 0.85em; color: #a1a1aa; margin-top: 15px; display: block;}
+        svg { width: 90px; height: 90px; border-radius: 22px; }
+    </style>
+</head>
+<body>
+    <h1>Baribir boshqachasi kerakmi?</h1>
+    <p>Quyidagi mutlaqo yangi 5 ta uslubdan birini tanlang:</p>
+    
+    <div class="grid">
+        <!-- 6. Negative Circle -->
+        <div class="card" onclick="alert('6-variant tanlandi!')">
+            <span class="label">6. Circle App</span>
+            <svg viewBox="0 0 512 512">
+                <circle cx="256" cy="256" r="256" fill="#ffffff" />
+                <path d="M180 140 H280 C380 140 400 256 400 256 C400 256 380 372 280 372 H180 V140 Z M260 220 V292 H280 C300 292 310 256 310 256 C310 256 300 220 280 220 H260 Z" fill="#000000" />
+            </svg>
+            <span class="desc">Spotify/Apple Style (Dumaloq)</span>
+        </div>
+
+        <!-- 7. 3D Cube -->
+        <div class="card" onclick="alert('7-variant tanlandi!')">
+            <span class="label">7. 3D Isometric</span>
+            <svg viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="100" fill="#000000" />
+                <path d="M150 150 L250 100 L350 150 L350 350 L250 400 L150 350 Z" fill="none" stroke="white" stroke-width="30" stroke-linejoin="round"/>
+                <path d="M150 150 L250 200 L350 150 M250 200 V400" stroke="white" stroke-width="30" fill="none"/>
+            </svg>
+            <span class="desc">Startup / Modern Tech</span>
+        </div>
+
+        <!-- 8. Neon Glass -->
+        <div class="card" onclick="alert('8-variant tanlandi!')">
+            <span class="label">8. Neon Glow</span>
+            <svg viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="120" fill="#111" />
+                <text x="50%" y="55%" font-family="Arial, sans-serif" font-weight="900" font-size="320" fill="none" stroke="#3b82f6" stroke-width="15" text-anchor="middle" dominant-baseline="middle" style="filter: drop-shadow(0 0 10px #3b82f6);">D</text>
+            </svg>
+            <span class="desc">Cyberpunk / Glassmorphism</span>
+        </div>
+
+        <!-- 9. Signature -->
+        <div class="card" onclick="alert('9-variant tanlandi!')">
+            <span class="label">9. Signature</span>
+            <svg viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="120" fill="#ffffff" />
+                <path d="M100 350 C100 350 150 100 250 100 C350 100 400 250 350 350 C300 450 150 450 150 250" fill="none" stroke="#000000" stroke-width="30" stroke-linecap="round" />
+            </svg>
+            <span class="desc">Imzo / Kreativ (Creative)</span>
+        </div>
+
+        <!-- 10. Abstract Path -->
+        <div class="card" onclick="alert('10-variant tanlandi!')">
+            <span class="label">10. Abstract Path</span>
+            <svg viewBox="0 0 512 512">
+                <rect width="512" height="512" rx="120" fill="#000000" />
+                <circle cx="200" cy="200" r="40" fill="white"/>
+                <circle cx="200" cy="312" r="40" fill="white"/>
+                <rect x="160" y="200" width="80" height="112" fill="white"/>
+                <circle cx="312" cy="256" r="100" fill="none" stroke="white" stroke-width="80" stroke-dasharray="314 500" transform="rotate(-90 312 256)"/>
+            </svg>
+            <span class="desc">Minimal Geometriya</span>
+        </div>
+    </div>
+</body>
+</html>
