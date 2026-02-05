@@ -136,8 +136,8 @@ export default function VerticalFullScreenSlider({ projects }) {
           exit="exit"
           className="absolute inset-0 flex flex-col items-center overflow-y-auto sm:overflow-hidden pb-10 sm:pb-0"
         >
-          {/* IMAGE - O'lchamlar saqlab qolindi */}
-          <div className="mt-[3vh] w-full flex justify-center items-center px-4 flex-shrink-0 h-[45vh] sm:h-[55vh]">
+          {/* IMAGE - O'lchamlar kichraytirildi: mobile 30vh, desktop 50vh */}
+          <div className="mt-[3vh] w-full flex justify-center items-center px-4 flex-shrink-0 h-[30vh] sm:h-[50vh] min-h-[200px]">
             <img
               src={projects[index].image}
               alt={projects[index].title}
