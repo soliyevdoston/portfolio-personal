@@ -97,7 +97,7 @@ export default function ContactCompact() {
   };
 
   return (
-    <main className="relative min-h-[calc(100vh-80px)] sm:h-[calc(100vh-80px)] dark:bg-[#09090b] transition-colors duration-500 flex flex-col items-center justify-center px-4 py-8 sm:py-0 gap-8 sm:gap-4 overflow-y-auto sm:overflow-hidden">
+    <main className="relative min-h-[calc(100vh-80px)] dark:bg-[#09090b] transition-colors duration-500 flex flex-col items-center justify-center px-4 py-8 gap-8 sm:gap-4 overflow-y-auto scrollbar-hide">
       {/* Globe Background - Dark modeda xiraroq turadi */}
       <div className="absolute top-0 left-0 w-full h-full -z-0 opacity-80 dark:opacity-40 pointer-events-none">
         <Globe />
