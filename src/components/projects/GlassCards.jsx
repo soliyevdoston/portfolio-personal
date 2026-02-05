@@ -37,12 +37,29 @@ export default function VerticalFullScreenSlider({ projects }) {
     }, 550);
   };
 
-  /* MOUSE WHEEL */
+  /* MOUSE WHEEL - SMART SCROLL GUARD */
+  const contentRef = useRef(null); // Ref for scrollable text container
+
   useEffect(() => {
     const handleWheel = (e) => {
+      // 1. Agar foydalanuvchi text ichida scroll qilayotgan bo'lsa
+      if (contentRef.current && contentRef.current.contains(e.target)) {
+        const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
+        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 5; // -5px tolerance
+        const isAtTop = scrollTop === 0;
+
+        // Agar pastga scroll qilsa va text hali tugamagan bo'lsa -> Slayd almashmasin
+        if (e.deltaY > 0 && !isAtBottom) return;
+
+        // Agar tepaga scroll qilsa va text hali boshiga yetmagan bo'lsa -> Slayd almashmasin
+        if (e.deltaY < 0 && !isAtTop) return;
+      }
+
+      // 2. Oddiy holatda slayd almashishi (threshold 30)
       if (Math.abs(e.deltaY) < 30) return;
       changeSlide(e.deltaY > 0 ? "down" : "up");
     };
+    
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
   }, [index]);
@@ -120,16 +137,19 @@ export default function VerticalFullScreenSlider({ projects }) {
           className="absolute inset-0 flex flex-col items-center overflow-y-auto sm:overflow-hidden pb-10 sm:pb-0"
         >
           {/* IMAGE - O'lchamlar saqlab qolindi */}
-          <div className="mt-[3vh] w-full flex justify-center px-4 flex-shrink-0">
+          <div className="mt-[3vh] w-full flex justify-center items-center px-4 flex-shrink-0 h-[45vh] sm:h-[55vh]">
             <img
               src={projects[index].image}
               alt={projects[index].title}
-              className="w-full max-w-5xl h-auto max-h-[45vh] sm:max-h-[55vh] object-contain rounded-3xl shadow-2xl dark:border dark:border-zinc-800"
+              className="w-full max-w-5xl h-full object-contain rounded-3xl shadow-2xl dark:border dark:border-zinc-800"
             />
           </div>
 
           {/* INFO CARD - O'lchamlar va stil saqlandi, dark mode qo'shildi */}
-          <div className="relative mt-4 w-full max-w-5xl bg-white dark:bg-zinc-900/90 dark:backdrop-blur-md rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2 border border-gray-100 dark:border-zinc-800 flex-shrink-0">
+          <div 
+            ref={contentRef}
+            className="relative mt-4 w-full max-w-5xl bg-white dark:bg-zinc-900/90 dark:backdrop-blur-md rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2 border border-gray-100 dark:border-zinc-800 flex-shrink-0 max-h-[40vh] sm:max-h-auto overflow-y-auto sm:overflow-visible"
+          >
             <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-zinc-100">
                 {projects[index].title}
