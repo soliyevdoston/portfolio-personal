@@ -11,7 +11,10 @@ import TestOnline from "../assets/onlinetest.png";
 import Countries from "../assets/countries.png";
 import MemoryImg from "../assets/memory.png";
 import Istiqbolluck from "../assets/istiqbolluck.png";
-
+import superadministiqbol from "../assets/superadmin-istiqbol.jpg";
+import teacheristiqbol from "../assets/teacher-istiqbol.jpg";
+import studentistiqbol from "../assets/student-istiqbol.jpg";
+import legallink from "../assets/legallink.jpg";
 const tabs = [
   { id: "glass", label: "Scroll rejimi" },
   { id: "masonry", label: "Grid rejimi" },
@@ -28,12 +31,78 @@ const SAMPLE = [
     startYear: "10-01-2026",
     endYear: "24-01-2026",
     tags: ["React", "TailwindCSS"],
-    github: "https://github.com/soliyevdoston/istiqbolluck-v0.2",
+
     demo: "https://www.istiqbolluck.uz/",
     image: Istiqbolluck,
   },
   {
     id: 1,
+    title: "Istiqbol Luck - superadmin",
+    minDescription:
+      "Istiqbol Luck superadmin — maktab ma’muriyati uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali maktab ma’muriyati o‘quvchilar, o‘qituvchilar va test natijalarini samarali boshqarishi mumkin.",
+    description:
+      "Istiqbol Luck superadmin — maktab ma’muriyati uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali maktab ma’muriyati o‘quvchilar, o‘qituvchilar va test natijalarini samarali boshqarishi mumkin. Boshqaruv paneli intuitiv interfeysga ega bo‘lib, ma’lumotlarni tez va oson yangilash imkonini beradi.",
+    startYear: "01-01-2026",
+    endYear: "03-03-2026",
+    tags: [
+      "Fullstack",
+      "React",
+      "TailwindCSS",
+      "NodeJs",
+      "ExpressJs",
+      "postgreSQL",
+      "AI",
+    ],
+
+    demo: "https://superadmin.istiqbolluck.uz",
+    image: superadministiqbol,
+  },
+  {
+    id: 2,
+    title: "Istiqbol Luck - teacher",
+    minDescription:
+      "Istiqbol Luck teacher — o‘qituvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o‘qituvchilar o‘quvchilari bilan bog‘lanish, test natijalarini ko‘rish va boshqa vazifalarni bajarish mumkin.",
+    description:
+      "Istiqbol Luck teacher — o‘qituvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o‘qituvchilar o‘quvchilari bilan bog‘lanish, test natijalarini ko‘rish va boshqa vazifalarni bajarish mumkin. Boshqaruv paneli intuitiv interfeysga ega bo‘lib, ma’lumotlarni tez va oson yangilash imkonini beradi.",
+    startYear: "01-01-2026",
+    endYear: "03-03-2026",
+    tags: [
+      "Fullstack",
+      "React",
+      "TailwindCSS",
+      "NodeJs",
+      "ExpressJs",
+      "postgreSQL",
+      "AI",
+    ],
+
+    demo: "https://teacher.istiqbolluck.uz",
+    image: teacheristiqbol,
+  },
+  {
+    id: 3,
+    title: "Istiqbol Luck - student",
+    minDescription:
+      "Istiqbol Luck student — o‘quvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o‘quvchilar o‘quv materiallarini ko‘rish, test natijalarini ko‘rish va boshqa vazifalarni bajarish mumkin.",
+    description:
+      "Istiqbol Luck student — o‘quvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o‘quvchilar o‘quv materiallarini ko‘rish, test natijalarini ko‘rish va boshqa vazifalarni bajarish mumkin. Boshqaruv paneli intuitiv interfeysga ega bo‘lib, ma’lumotlarni tez va oson yangilash imkonini beradi.",
+    startYear: "01-01-2026",
+    endYear: "03-03-2026",
+    tags: [
+      "Fullstack",
+      "React",
+      "TailwindCSS",
+      "NodeJs",
+      "ExpressJs",
+      "postgreSQL",
+      "AI",
+    ],
+
+    demo: "https://student.istiqbolluck.uz",
+    image: studentistiqbol,
+  },
+  {
+    id: 4,
     title: "Online Test Platform",
     minDescription:
       "Mazkur onlayn test platforma bilimlarni baholash va nazorat qilish uchun mo‘ljallangan.",
@@ -41,13 +110,33 @@ const SAMPLE = [
       "Onlayn test platformasi — bilimlarni baholash va nazorat qilish uchun qulay yechim.",
     startYear: "09-12-2025",
     endYear: "15-12-2025",
-    tags: ["React", "TailwindCSS", "NodeJs"],
-    github: "https://github.com/soliyevdoston/Test-sayti",
+    tags: [
+      "Fullstack",
+      "React",
+      "TailwindCSS",
+      "NodeJs",
+      "ExpressJs",
+      "mongodb",
+      "AI",
+    ],
     demo: "https://www.testonlinee.uz",
     image: TestOnline,
   },
   {
-    id: 2,
+    id: 5,
+    title: "Legallink",
+    minDescription:
+      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
+    description:
+      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
+    startYear: "09-01-2026",
+    endYear: "15-02-2026",
+    tags: ["React", "TailwindCSS"],
+    demo: "https://www.legallink.uz",
+    image: legallink,
+  },
+  {
+    id: 6,
     title: "Fer-Teach",
     minDescription:
       "Fer-Teach — pedagogika va texnologiyaga oid ilmiy maqolalar to‘plami",
@@ -61,7 +150,7 @@ const SAMPLE = [
     image: FerTeachImg,
   },
   {
-    id: 3,
+    id: 7,
     title: "Memory Game",
     minDescription:
       "Klassik xotira o‘yini: kartalarni aylantiring, juftliklarni toping!",
@@ -75,7 +164,7 @@ const SAMPLE = [
     image: MemoryImg,
   },
   {
-    id: 4,
+    id: 8,
     title: "Password Generator",
     minDescription: "Xavfsiz va kuchli parollarni bir necha soniyada yarating.",
     description: "Xavfsizlik va qulaylik uchun parol generatori.",
@@ -87,7 +176,7 @@ const SAMPLE = [
     image: PasswordImg,
   },
   {
-    id: 5,
+    id: 9,
     title: "English Dictionary",
     minDescription:
       "Inglizcha so‘zlar va ularning ta’riflarini o‘z ichiga olgan lug‘at ilovasi.",
@@ -101,7 +190,7 @@ const SAMPLE = [
     image: Dictionary,
   },
   {
-    id: 6,
+    id: 10,
     title: "Context Store",
     minDescription:
       "ContextStore — mahsulotlarni savatga qo‘shish va avtomatik hisoblash platformasi.",
@@ -115,7 +204,7 @@ const SAMPLE = [
     image: Contextstore,
   },
   {
-    id: 7,
+    id: 11,
     title: "Countries Information",
     minDescription:
       "Dunyo davlatlarining bayroqlari, poytaxtlari va aholisi haqida platforma.",
