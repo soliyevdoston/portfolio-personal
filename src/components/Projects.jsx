@@ -5,23 +5,23 @@ import GlassCards from "./projects/GlassCards";
 import MasonryGrid from "./projects/MasonryGrid";
 
 // Rasmlar (importlarni saqlab qoldik)
-import FerTeachImg from "../assets/ferteach.jpg";
-import PasswordImg from "../assets/PASSWORD2.png";
-import Dictionary from "../assets/dictionary.png";
-import Contextstore from "../assets/contextstore.png";
-import TestOnline from "../assets/onlinetest.png";
-import Countries from "../assets/countries.png";
-import MemoryImg from "../assets/memory.png";
-import Istiqbolluck from "../assets/istiqbolluck.png";
-import superadministiqbol from "../assets/superadmin-istiqbol.jpg";
-import teacheristiqbol from "../assets/teacher-istiqbol.jpg";
-import studentistiqbol from "../assets/student-istiqbol.jpg";
-import legallink from "../assets/legallink.jpg";
-import intellectolympiad from "../assets/intellectolympiad.png";
-import educode from "../assets/educode.png";
-import moltacaldo from "../assets/moltacaldo.png";
-import edumind from "../assets/edumind.png";
-import threed from "../assets/threed.png";
+import FerTeachImg from "../assets/ferteach.webp";
+import PasswordImg from "../assets/PASSWORD2.webp";
+import Dictionary from "../assets/dictionary.webp";
+import Contextstore from "../assets/contextstore.webp";
+import TestOnline from "../assets/onlinetest.webp";
+import Countries from "../assets/countries.webp";
+import MemoryImg from "../assets/memory.webp";
+import Istiqbolluck from "../assets/istiqbolluck.webp";
+import superadministiqbol from "../assets/superadmin-istiqbol.webp";
+import teacheristiqbol from "../assets/teacher-istiqbol.webp";
+import studentistiqbol from "../assets/student-istiqbol.webp";
+import legallink from "../assets/legallink.webp";
+import intellectolympiad from "../assets/intellectolympiad.webp";
+import educode from "../assets/educode.webp";
+import moltacaldo from "../assets/moltacaldo.webp";
+import edumind from "../assets/edumind.webp";
+import threed from "../assets/threed.webp";
 const tabs = [
   { id: "glass", label: "Vitrina" },
   { id: "masonry", label: "Grid" },
