@@ -22,6 +22,7 @@ import educode from "../assets/educode.webp";
 import moltacaldo from "../assets/moltacaldo.webp";
 import edumind from "../assets/edumind.webp";
 import threed from "../assets/threed.webp";
+import yado from "../assets/yado.webp";
 const tabs = [
   { id: "glass", label: "Vitrina" },
   { id: "masonry", label: "Grid" },
@@ -69,24 +70,18 @@ const SAMPLE = [
     image: TestOnline.src,
   },
   {
-    id: 13,
-    title: "EduCode",
+    id: 0,
+    title: "Istiqbol Luck",
     minDescription:
-      "EduCode — AKT (axborot-kommunikatsiya texnologiyalari) fanlarini amaliyot orqali o'rganish uchun zamonaviy ta'lim platformasi. Interaktiv darslar, tezkor AI izohlari va har bir o'quvchining sur'atiga moslashadigan tizim. Platformada videolar yuklash va savollar tayyorlash imkoniyati mavjud bo'lib, o'quvchilar barcha o'quv materiallarini o'z shaxsiy panellari orqali ko'rishi mumkin.",
+      "Istiqbol Luck — xususiy maktab uchun ishlab chiqilgan zamonaviy va to'liq rasmiy web sayt. Sayt orqali maktab faoliyati, ta'lim yo'nalishlari, o'qituvchilar tarkibi va yutuqlari bilan tanishish mumkin. Ichki test tizimi, yangiliklar bo'limi va qulay, mobil qurilmalarga moslashgan interfeys bilan jihozlangan — ota-onalar va o'quvchilar uchun maktab haqidagi barcha ma'lumotni bir joyda jamlaydi.",
     description:
-      "EduCode — AKT fanlarini amaliyot orqali o'rganish uchun ta'lim platformasi. Videolar yuklash, savollar tayyorlash va o'quvchilar uchun shaxsiy panellar bilan jihozlangan.",
-    startYear: "01-04-2026",
-    endYear: "20-06-2026",
-    tags: [
-      "Fullstack",
-      "React",
-      "NestJS",
-      "TailwindCSS",
-      "PostgreSQL",
-      "AI",
-    ],
-    demo: "https://educode.soliyev.uz",
-    image: educode.src,
+      "Istiqbol Luck — xususiy maktab uchun zamonaviy rasmiy web sayt. Ta'lim yo'nalishlari, o'qituvchilar tarkibi, yangiliklar va ichki test tizimi bilan jihozlangan.",
+    startYear: "10-01-2026",
+    endYear: "24-01-2026",
+    tags: ["React", "TailwindCSS"],
+
+    demo: "https://www.istiqbolluck.uz/",
+    image: Istiqbolluck.src,
   },
   {
     id: 14,
@@ -108,57 +103,17 @@ const SAMPLE = [
     image: moltacaldo.src,
   },
   {
-    id: 15,
-    title: "EduMind",
+    id: 5,
+    title: "Legallink",
     minDescription:
-      "EduMind — sun'iy intellekt (Anthropic Claude) bilan kuchaytirilgan ta'lim platformasi. Real-vaqt viktorinalari, AI asosida savollar generatsiyasi va batafsil tahlil imkonini beradi. O'qituvchilar va talabalar uchun mo'ljallangan zamonaviy raqamli ta'lim tizimi. Xavfsiz autentifikatsiya va o'zbek tiliga to'liq moslik bilan jihozlangan.",
+      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
     description:
-      "EduMind — AI (Anthropic Claude) bilan kuchaytirilgan ta'lim platformasi. Real-vaqt viktorinalari va AI asosida savollar generatsiyasi bilan o'qituvchilar va talabalar uchun zamonaviy raqamli ta'lim.",
-    startYear: "01-05-2026",
-    endYear: "24-06-2026",
-    tags: [
-      "Fullstack",
-      "React",
-      "NestJS",
-      "TailwindCSS",
-      "PostgreSQL",
-      "AI",
-    ],
-    demo: "https://edumind.soliyev.uz",
-    image: edumind.src,
-  },
-  {
-    id: 16,
-    title: "3D Gesture Control",
-    minDescription:
-      "Qo'l harakatlari (gesture) va ovoz orqali boshqariladigan interaktiv 3D zarrachalar vizualizatsiyasi. Veb-kamera tasviri MediaPipe yordamida tahlil qilinib, qo'l ishoralari (FIST, OPEN) bilan 3D sahna boshqariladi. Kamera to'liq brauzerda lokal ishlaydi — kadrlar serverga yuklanmaydi.",
-    description:
-      "Qo'l ishoralari va ovoz orqali boshqariladigan interaktiv 3D zarrachalar vizualizatsiyasi. Veb-kamera brauzerda lokal tahlil qilinadi.",
-    startYear: "01-06-2026",
-    endYear: "20-06-2026",
-    tags: [
-      "Three.js",
-      "MediaPipe",
-      "TypeScript",
-      "Vite",
-      "WebGL",
-    ],
-    demo: "https://3d.soliyev.uz",
-    image: threed.src,
-  },
-  {
-    id: 0,
-    title: "Istiqbol Luck",
-    minDescription:
-      "Istiqbol Luck — xususiy maktab uchun ishlab chiqilgan zamonaviy rasmiy web sayt. ",
-    description:
-      "Istiqbol Luck — xususiy maktab uchun ishlab chiqilgan zamonaviy rasmiy web sayt. Sayt orqali maktab haqida umumiy ma'lumotlar, ta'lim yo'nalishlari, o'qituvchilar tarkibi va ichki test tizimi bilan tanishish mumkin.",
-    startYear: "10-01-2026",
-    endYear: "24-01-2026",
+      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
+    startYear: "09-01-2026",
+    endYear: "15-02-2026",
     tags: ["React", "TailwindCSS"],
-
-    demo: "https://www.istiqbolluck.uz/",
-    image: Istiqbolluck.src,
+    demo: "https://www.legallink.uz",
+    image: legallink.src,
   },
   {
     id: 1,
@@ -227,17 +182,22 @@ const SAMPLE = [
     image: studentistiqbol.src,
   },
   {
-    id: 5,
-    title: "Legallink",
+    id: 17,
+    title: "YADO — Yaponiya mehmonxonalari",
     minDescription:
-      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
+      "YADO (宿) — Yaponiya bo'ylab diqqat bilan tanlangan ryokan, onsen va shahar mehmonxonalari to'plami. Foydalanuvchilar maskanlarni ko'rib, buyurtma berishi mumkin. Dabdaba uchun emas, osudalik uchun saralangan zamonaviy bron qilish platformasi.",
     description:
-      "Legallink — yuridik xizmatlar uchun onlayn platforma, mijozlarga qulay va tezkor yechimlar taqdim etadi.",
-    startYear: "09-01-2026",
-    endYear: "15-02-2026",
-    tags: ["React", "TailwindCSS"],
-    demo: "https://www.legallink.uz",
-    image: legallink.src,
+      "YADO — Yaponiya mehmonxonalari (ryokan, onsen, shahar) to'plami va bron qilish platformasi.",
+    startYear: "19-06-2026",
+    endYear: "19-06-2026",
+    tags: [
+      "Next.js",
+      "React",
+      "NestJS",
+      "TypeScript",
+    ],
+    demo: "https://jepan-hotel.soliyev.uz",
+    image: yado.src,
   },
   {
     id: 6,
@@ -252,6 +212,65 @@ const SAMPLE = [
     github: "https://github.com/soliyevdoston/fer-tech",
     demo: "https://ferteach.soliyev.uz",
     image: FerTeachImg.src,
+  },
+  {
+    id: 13,
+    title: "EduCode",
+    minDescription:
+      "EduCode — AKT (axborot-kommunikatsiya texnologiyalari) fanlarini amaliyot orqali o'rganish uchun zamonaviy ta'lim platformasi. Interaktiv darslar, tezkor AI izohlari va har bir o'quvchining sur'atiga moslashadigan tizim. Platformada videolar yuklash va savollar tayyorlash imkoniyati mavjud bo'lib, o'quvchilar barcha o'quv materiallarini o'z shaxsiy panellari orqali ko'rishi mumkin.",
+    description:
+      "EduCode — AKT fanlarini amaliyot orqali o'rganish uchun ta'lim platformasi. Videolar yuklash, savollar tayyorlash va o'quvchilar uchun shaxsiy panellar bilan jihozlangan.",
+    startYear: "01-04-2026",
+    endYear: "20-06-2026",
+    tags: [
+      "Fullstack",
+      "React",
+      "NestJS",
+      "TailwindCSS",
+      "PostgreSQL",
+      "AI",
+    ],
+    demo: "https://educode.soliyev.uz",
+    image: educode.src,
+  },
+  {
+    id: 15,
+    title: "EduMind",
+    minDescription:
+      "EduMind — sun'iy intellekt (Anthropic Claude) bilan kuchaytirilgan ta'lim platformasi. Real-vaqt viktorinalari, AI asosida savollar generatsiyasi va batafsil tahlil imkonini beradi. O'qituvchilar va talabalar uchun mo'ljallangan zamonaviy raqamli ta'lim tizimi. Xavfsiz autentifikatsiya va o'zbek tiliga to'liq moslik bilan jihozlangan.",
+    description:
+      "EduMind — AI (Anthropic Claude) bilan kuchaytirilgan ta'lim platformasi. Real-vaqt viktorinalari va AI asosida savollar generatsiyasi bilan o'qituvchilar va talabalar uchun zamonaviy raqamli ta'lim.",
+    startYear: "01-05-2026",
+    endYear: "24-06-2026",
+    tags: [
+      "Fullstack",
+      "React",
+      "NestJS",
+      "TailwindCSS",
+      "PostgreSQL",
+      "AI",
+    ],
+    demo: "https://edumind.soliyev.uz",
+    image: edumind.src,
+  },
+  {
+    id: 16,
+    title: "3D Gesture Control",
+    minDescription:
+      "Qo'l harakatlari (gesture) va ovoz orqali boshqariladigan interaktiv 3D zarrachalar vizualizatsiyasi. Veb-kamera tasviri MediaPipe yordamida tahlil qilinib, qo'l ishoralari (FIST, OPEN) bilan 3D sahna boshqariladi. Kamera to'liq brauzerda lokal ishlaydi — kadrlar serverga yuklanmaydi.",
+    description:
+      "Qo'l ishoralari va ovoz orqali boshqariladigan interaktiv 3D zarrachalar vizualizatsiyasi. Veb-kamera brauzerda lokal tahlil qilinadi.",
+    startYear: "01-06-2026",
+    endYear: "20-06-2026",
+    tags: [
+      "Three.js",
+      "MediaPipe",
+      "TypeScript",
+      "Vite",
+      "WebGL",
+    ],
+    demo: "https://3d.soliyev.uz",
+    image: threed.src,
   },
   {
     id: 7,
