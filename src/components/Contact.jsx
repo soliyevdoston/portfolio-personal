@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+"use client";
+
+import React from "react";
 import {
   FaTelegram,
   FaInstagram,
@@ -44,10 +46,11 @@ export default function ContactCompact() {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
+    const projectType = e.target.projectType?.value || "Aniqlanmagan";
     const message = e.target.message.value;
 
-    const botToken = import.meta.env.VITE_TELEGRAM_BOT_TOKEN;
-    const chatId = import.meta.env.VITE_TELEGRAM_CHAT_ID;
+    const botToken = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
+    const chatId = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
 
     // Check if env vars are loaded
     if (!botToken || !chatId) {
@@ -61,6 +64,7 @@ export default function ContactCompact() {
 
 👤 <b>Foydalanuvchi:</b> ${name}
 📧 <b>Email:</b> ${email}
+🎯 <b>Loyiha turi:</b> ${projectType}
 
 📝 <b>Murojaat mazmuni:</b>
 <i>${message}</i>
@@ -97,7 +101,7 @@ export default function ContactCompact() {
   };
 
   return (
-    <main className="relative min-h-[calc(100vh-80px)] dark:bg-[#09090b] transition-colors duration-500 flex flex-col items-center justify-center px-4 py-8 gap-8 sm:gap-4 overflow-y-auto scrollbar-hide">
+    <main className="relative min-h-[calc(100vh-80px)] transition-colors duration-500 flex flex-col items-center justify-center px-4 py-8 gap-8 sm:gap-4 overflow-y-auto scrollbar-hide">
       {/* Globe Background - Dark modeda xiraroq turadi */}
       <div className="absolute top-0 left-0 w-full h-full -z-0 opacity-80 dark:opacity-40 pointer-events-none">
         <Globe />
@@ -159,6 +163,18 @@ export default function ContactCompact() {
             className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
           />
         </div>
+        <select
+          name="projectType"
+          defaultValue=""
+          className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 transition-all font-medium shadow-sm"
+        >
+          <option value="" disabled>Loyiha turi (ixtiyoriy)</option>
+          <option value="Biznes sayti">Biznes / kompaniya sayti</option>
+          <option value="Maktab platformasi">Maktab / o'quv markazi platformasi</option>
+          <option value="Boshqaruv paneli">Boshqaruv paneli (Dashboard)</option>
+          <option value="Onlayn platforma">Onlayn platforma / E-commerce</option>
+          <option value="Boshqa">Boshqa / aniq emas</option>
+        </select>
         <textarea
           name="message"
           rows="4"

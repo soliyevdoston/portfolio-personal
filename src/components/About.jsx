@@ -1,10 +1,12 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Meteors } from "@/components/ui/meteors";
 
 export default function About() {
   return (
-    <section className="relative min-h-screen w-full flex items-center justify-center px-6  dark:bg-[#09090b] transition-colors duration-500 overflow-hidden">
+    <section className="relative min-h-screen w-full flex items-center justify-center px-6 transition-colors duration-500 overflow-hidden">
       {/* Meteor effekti - Dark modeda yorqinroq ko'rinadi */}
       <Meteors number={20} />
 
@@ -27,38 +29,31 @@ export default function About() {
 
           <div className="space-y-3">
             <p className="font-medium text-black dark:text-zinc-100">
-              Bugun esa men:
+              Bugun men har qanday muammoni bitta tizim orqali hal qilaman:
             </p>
             <ul className="space-y-3 pl-2 sm:pl-4 border-l border-gray-100 dark:border-zinc-800">
               <li className="flex items-center gap-3">
                 <span className="h-px w-4 bg-blue-500"></span>
-                Interfeyslar quraman
+                Muammoni tushunaman
               </li>
               <li className="flex items-center gap-3">
                 <span className="h-px w-4 bg-blue-500"></span>
-                Foydalanuvchi tajribasini (UX) tahlil qilaman
+                Soddaroq yo'lini topaman
               </li>
               <li className="flex items-center gap-3">
                 <span className="h-px w-4 bg-blue-500"></span>
-                Kodni jim va samarali ishlashga majbur qilaman
+                Ishlaydigan yechim quraman
               </li>
             </ul>
           </div>
 
           <p>
-            Men uchun frontend — bu shunchaki dizayn emas. Bu{" "}
-            <span className="font-semibold text-black dark:text-white underline decoration-blue-500/50 decoration-2 underline-offset-4">
-              tajriba
-            </span>
-            ,{" "}
-            <span className="font-semibold text-black dark:text-white underline decoration-blue-500/50 decoration-2 underline-offset-4">
-              tezlik
+            Maqsadim — odamlar hayotidagi qo'limdan keladigan muammolarni hal
+            qilish. Yuzaki yamash emas — har bir muammoning{" "}
+            <span className="font-semibold text-black dark:text-white">
+              asl manbasini
             </span>{" "}
-            va{" "}
-            <span className="font-semibold text-black dark:text-white underline decoration-blue-500/50 decoration-2 underline-offset-4">
-              aniqlik
-            </span>{" "}
-            demakdir.
+            topib, shu yerdan yechim quraman.
           </p>
 
           <p className="font-medium text-zinc-900 dark:text-zinc-200">

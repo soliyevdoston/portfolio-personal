@@ -96,6 +96,7 @@
   }}
 
 :root {
+  --grid-color: rgba(0, 0, 0, 0.07);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -131,6 +132,7 @@
 }
 
 .dark {
+  --grid-color: rgba(255, 255, 255, 0.08);
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -172,13 +174,15 @@
     @apply bg-background text-foreground;
   }
 }
-* {
-  cursor: none !important;
-}
-input,
-textarea,
-select {
-  cursor: text !important;
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+  input,
+  textarea,
+  select {
+    cursor: text !important;
+  }
 }
 ::view-transition-old(root), ::view-transition-new(root) {
     animation: none;

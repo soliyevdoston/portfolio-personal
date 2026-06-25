@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { motion, useSpring } from "motion/react"
 
@@ -63,7 +65,15 @@ export function SmoothCursor({
     restDelta: 0.001,
   }
 }) {
-  const [isMoving, setIsMoving] = useState(false)
+  const [isTouch, setIsTouch] = useState(true);
+
+  useEffect(() => {
+    const touch =
+      window.matchMedia("(hover: none), (pointer: coarse)").matches ||
+      "ontouchstart" in window;
+    setIsTouch(touch);
+  }, []);
+
   const lastMousePos = useRef({ x: 0, y: 0 })
   const velocity = useRef({ x: 0, y: 0 })
   const lastUpdateTime = useRef(Date.now())
@@ -84,6 +94,7 @@ export function SmoothCursor({
   })
 
   useEffect(() => {
+    if (isTouch) return;
     const updateVelocity = (currentPos) => {
       const currentTime = Date.now()
       const deltaTime = currentTime - lastUpdateTime.current
@@ -121,11 +132,9 @@ export function SmoothCursor({
         previousAngle.current = currentAngle
 
         scale.set(0.95)
-        setIsMoving(true)
 
         const timeout = setTimeout(() => {
           scale.set(1)
-          setIsMoving(false)
         }, 150)
 
         return () => clearTimeout(timeout);
@@ -150,7 +159,9 @@ export function SmoothCursor({
       document.body.style.cursor = "auto"
       if (rafId) cancelAnimationFrame(rafId)
     };
-  }, [cursorX, cursorY, rotation, scale])
+  }, [cursorX, cursorY, rotation, scale, isTouch])
+
+  if (isTouch) return null;
 
   return (
     <motion.div

@@ -1,216 +1,258 @@
-import React, { useState, useEffect, useRef } from "react";
+"use client";
+
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShimmerButton } from "@/components/ui/shimmer-button";
-import { BorderBeam } from "@/components/ui/border-beam";
+import { FaGithub, FaArrowRight, FaArrowLeft } from "react-icons/fa";
 
-export default function VerticalFullScreenSlider({ projects }) {
-  const [index, setIndex] = useState(0);
-  const [direction, setDirection] = useState("down");
+export default function GlassCards({ projects }) {
+  const [idx, setIdx] = useState(0);
+  const [dir, setDir] = useState(1);
+  const touchStartX = useRef(0);
 
-  const isAnimating = useRef(false);
-  const lastActionTime = useRef(0);
-  const touchStartY = useRef(0);
+  const next = useCallback(() => {
+    if (idx >= projects.length - 1) return;
+    setDir(1);
+    setIdx((i) => i + 1);
+  }, [idx, projects.length]);
 
-  /* BODY SCROLLNI BLOKLASH */
+  const prev = useCallback(() => {
+    if (idx <= 0) return;
+    setDir(-1);
+    setIdx((i) => i - 1);
+  }, [idx]);
+
+  /* Body scroll lock — barcha qurilmalarda */
   useEffect(() => {
     const original = document.body.style.overflow;
     document.body.style.overflow = "hidden";
-    return () => (document.body.style.overflow = original);
+    return () => { document.body.style.overflow = original; };
   }, []);
 
-  /* SLIDE O'ZGARTIRISH */
-  const changeSlide = (dir) => {
-    if (isAnimating.current) return;
-    const now = Date.now();
-    if (now - lastActionTime.current < 650) return;
-    lastActionTime.current = now;
+  /* Keyboard */
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowRight" || e.key === "ArrowDown") next();
+      if (e.key === "ArrowLeft" || e.key === "ArrowUp") prev();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [next, prev]);
 
-    if (dir === "down" && index === projects.length - 1) return;
-    if (dir === "up" && index === 0) return;
-
-    isAnimating.current = true;
-    setDirection(dir);
-    setIndex((prev) => (dir === "down" ? prev + 1 : prev - 1));
-
-    setTimeout(() => {
-      isAnimating.current = false;
-    }, 550);
+  /* Touch swipe — mobilda chap/o'ngga sviplab almashtirish */
+  const onTouchStart = (e) => { touchStartX.current = e.touches[0].clientX; };
+  const onTouchEnd = (e) => {
+    const diff = touchStartX.current - e.changedTouches[0].clientX;
+    if (Math.abs(diff) < 50) return;
+    diff > 0 ? next() : prev();
   };
 
-  /* MOUSE WHEEL - SMART SCROLL GUARD */
-  const contentRef = useRef(null); // Ref for scrollable text container
+  const p = projects[idx];
 
-  useEffect(() => {
-    const handleWheel = (e) => {
-      // 1. Agar foydalanuvchi text ichida scroll qilayotgan bo'lsa
-      if (contentRef.current && contentRef.current.contains(e.target)) {
-        const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
-        const isAtBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight - 5; // -5px tolerance
-        const isAtTop = scrollTop === 0;
+  const imgVariants = {
+    enter: (d) => ({ opacity: 0, scale: 1.05, x: d * 30 }),
+    center: { opacity: 1, scale: 1, x: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
+    exit: (d) => ({ opacity: 0, scale: 0.98, x: -d * 30, transition: { duration: 0.4, ease: [0.55, 0, 0.65, 0.45] } }),
+  };
 
-        // Agar pastga scroll qilsa va text hali tugamagan bo'lsa -> Slayd almashmasin
-        if (e.deltaY > 0 && !isAtBottom) return;
-
-        // Agar tepaga scroll qilsa va text hali boshiga yetmagan bo'lsa -> Slayd almashmasin
-        if (e.deltaY < 0 && !isAtTop) return;
-      }
-
-      // 2. Oddiy holatda slayd almashishi (threshold 30)
-      if (Math.abs(e.deltaY) < 30) return;
-      changeSlide(e.deltaY > 0 ? "down" : "up");
-    };
-    
-    window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, [index]);
-
-  /* KEYBOARD */
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === "ArrowDown") changeSlide("down");
-      if (e.key === "ArrowUp") changeSlide("up");
-    };
-    window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
-  }, [index]);
-
-  /* TOUCH */
-  useEffect(() => {
-    const start = (e) => (touchStartY.current = e.touches[0].clientY);
-    const end = (e) => {
-      const diff = touchStartY.current - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 60) return;
-      changeSlide(diff > 0 ? "down" : "up");
-    };
-    window.addEventListener("touchstart", start);
-    window.addEventListener("touchend", end);
-    return () => {
-      window.removeEventListener("touchstart", start);
-      window.removeEventListener("touchend", end);
-    };
-  }, [index]);
-
-  const variants = {
-    enter: (dir) => ({
-      y: dir === "down" ? 100 : -100,
-      opacity: 0,
-      scale: 0.97,
-    }),
-    center: {
-      y: 0,
+  const textVariants = {
+    enter: { opacity: 0 },
+    center: (i) => ({
       opacity: 1,
-      scale: 1,
-      transition: { duration: 0.55, ease: "easeOut" },
-    },
-    exit: (dir) => ({
-      y: dir === "down" ? -100 : 100,
-      opacity: 0,
-      scale: 0.97,
-      transition: { duration: 0.35, ease: "easeIn" },
+      transition: { duration: 0.45, delay: 0.1 + i * 0.05, ease: [0.22, 1, 0.36, 1] },
     }),
+    exit: { opacity: 0, transition: { duration: 0.2 } },
   };
 
   return (
-    <div className="relative w-full h-screen overflow-hidden  dark:bg-[#09090b] transition-colors duration-500">
-      {/* PROGRESS NUQTALAR */}
-      <div className="hidden lg:flex absolute right-5 top-1/2 -translate-y-1/2 flex-col gap-3 z-20">
-        {projects.map((_, i) => (
-          <span
-            key={i}
-            className={`w-2 h-2 rounded-full transition-all ${
-              i === index
-                ? "bg-black dark:bg-white scale-125"
-                : "bg-gray-400 dark:bg-zinc-700"
-            }`}
-          />
-        ))}
+    <div className="relative w-full h-[calc(100vh-160px)] sm:h-[calc(100vh-180px)] lg:h-auto lg:min-h-[calc(100vh-180px)] py-2 lg:py-6 flex flex-col lg:block">
+
+      {/* Asosiy ko'rinish */}
+      <div className="grid grid-rows-[30vh_1fr] sm:grid-rows-[35vh_1fr] lg:grid-rows-none lg:grid-cols-[1fr_1.25fr] gap-3 lg:gap-14 flex-1 min-h-0 lg:h-full lg:items-stretch">
+
+        {/* CHAP — Info panel */}
+        <div className="flex flex-col lg:justify-between gap-2 lg:gap-6 lg:min-h-[70vh] order-2 lg:order-1 min-h-0">
+          {/* Yuqori — hisoblagich (1/12) — faqat desktop'da, mobilda rasm ustida */}
+          <div className="hidden lg:flex items-baseline gap-1 font-bold tabular-nums">
+            <span className="text-black dark:text-white lg:text-4xl">
+              {idx + 1}
+            </span>
+            <span className="text-gray-400 dark:text-zinc-600 lg:text-2xl">
+              /{projects.length}
+            </span>
+          </div>
+
+          {/* Markaz — kontent (animatsion) */}
+          <div className="lg:flex-1 flex flex-col lg:justify-center min-h-0 overflow-hidden">
+            <AnimatePresence mode="wait" custom={dir}>
+              <motion.div key={idx} className="flex flex-col gap-2 lg:gap-5">
+                <motion.span
+                  custom={0}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="text-[10px] sm:text-xs uppercase tracking-[0.2em] lg:tracking-[0.3em] text-blue-600 dark:text-blue-400 font-semibold"
+                >
+                  Loyiha · {p.endYear?.split("-")[2] || ""}
+                </motion.span>
+
+                <motion.h2
+                  custom={1}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="text-lg sm:text-2xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-gray-900 dark:text-zinc-50 leading-[1.1] break-words line-clamp-2"
+                >
+                  {p.title}
+                </motion.h2>
+
+                <motion.p
+                  custom={2}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="text-[13px] sm:text-[15px] lg:text-[16px] leading-snug lg:leading-relaxed text-gray-600 dark:text-zinc-400 max-w-lg line-clamp-3 lg:line-clamp-none"
+                >
+                  {p.minDescription || p.description}
+                </motion.p>
+
+                <motion.div
+                  custom={3}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="flex flex-wrap gap-1.5 lg:gap-2 max-h-[3rem] lg:max-h-none overflow-hidden"
+                >
+                  {p.tags.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 lg:px-3 py-0.5 lg:py-1 text-[9px] lg:text-[11px] font-medium uppercase tracking-wider rounded-full border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-zinc-300"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  custom={4}
+                  variants={textVariants}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  className="flex gap-2 lg:gap-3 mt-1 lg:mt-2"
+                >
+                  {p.demo && (
+                    <a
+                      href={p.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="group inline-flex items-center gap-2 px-3.5 lg:px-5 py-2 lg:py-3 rounded-full bg-black dark:bg-white text-white dark:text-black text-xs lg:text-sm font-semibold hover:gap-3 transition-all duration-300"
+                    >
+                      Saytni ko'rish
+                      <FaArrowRight size={11} className="transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  )}
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label="GitHub"
+                      className="inline-flex items-center justify-center w-9 h-9 lg:w-12 lg:h-12 rounded-full border border-gray-300 dark:border-zinc-700 text-gray-700 dark:text-zinc-300 hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors"
+                    >
+                      <FaGithub size={14} />
+                    </a>
+                  )}
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Pastki — strelka tugmalar (faqat desktop, mobilda rasm ustida) */}
+          <div className="hidden lg:flex items-center gap-3">
+            <button
+              onClick={prev}
+              disabled={idx === 0}
+              aria-label="Oldingi"
+              className="group w-9 h-9 lg:w-12 lg:h-12 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center text-gray-700 dark:text-zinc-300 hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            >
+              <FaArrowLeft size={12} />
+            </button>
+            <button
+              onClick={next}
+              disabled={idx === projects.length - 1}
+              aria-label="Keyingi"
+              className="group w-9 h-9 lg:w-12 lg:h-12 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center text-gray-700 dark:text-zinc-300 hover:bg-black hover:text-white hover:border-black dark:hover:bg-white dark:hover:text-black dark:hover:border-white disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-200"
+            >
+              <FaArrowRight size={12} />
+            </button>
+            <span className="ml-3 text-xs text-gray-400 dark:text-zinc-600 hidden sm:inline">
+              ← → klaviatura bilan ham
+            </span>
+          </div>
+        </div>
+
+        {/* O'NG — Rasm */}
+        <div
+          onTouchStart={onTouchStart}
+          onTouchEnd={onTouchEnd}
+          className="relative order-1 lg:order-2 h-[30vh] sm:h-[35vh] lg:h-[75vh] rounded-xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-zinc-900 dark:to-zinc-950 shadow-xl lg:shadow-2xl dark:shadow-black/50 ring-1 ring-black/5 dark:ring-white/10 touch-pan-y"
+        >
+          <AnimatePresence mode="wait" custom={dir}>
+            <motion.div
+              key={idx}
+              custom={dir}
+              variants={imgVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              className="absolute inset-0"
+            >
+              {/* Blur backdrop — bir xil rasmni cho'zib, blurlab qo'yamiz */}
+              <img
+                src={p.image}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-40 dark:opacity-25"
+              />
+              {/* Asosiy rasm — to'liq ko'rinadi */}
+              <img
+                src={p.image}
+                alt={p.title}
+                className="absolute inset-0 w-full h-full object-contain p-4 sm:p-6 lg:p-8 drop-shadow-2xl"
+              />
+            </motion.div>
+          </AnimatePresence>
+
+        </div>
       </div>
 
-      <AnimatePresence initial={false} custom={direction}>
-        <motion.div
-          key={index}
-          custom={direction}
-          variants={variants}
-          initial="enter"
-          animate="center"
-          exit="exit"
-          className="absolute inset-0 flex flex-col items-center overflow-y-auto sm:overflow-hidden pb-10 sm:pb-0"
+      {/* MOBILE — pastdagi toza navigatsiya qatori */}
+      <div className="lg:hidden flex items-center justify-center gap-4 mt-3">
+        <button
+          onClick={prev}
+          disabled={idx === 0}
+          aria-label="Oldingi"
+          className="w-11 h-11 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center text-gray-700 dark:text-zinc-300 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md"
         >
-          {/* IMAGE - O'lchamlar kichraytirildi: mobile 30vh, desktop 50vh */}
-          <div className="mt-[3vh] w-full flex justify-center items-center px-4 flex-shrink-0 h-[30vh] sm:h-[50vh] min-h-[200px]">
-            <img
-              src={projects[index].image}
-              alt={projects[index].title}
-              className="w-full max-w-5xl h-full object-contain rounded-3xl shadow-2xl dark:border dark:border-zinc-800"
-            />
-          </div>
+          <FaArrowLeft size={14} />
+        </button>
+        <span className="text-sm font-bold tabular-nums text-gray-700 dark:text-zinc-300 min-w-[3.5rem] text-center">
+          {idx + 1} / {projects.length}
+        </span>
+        <button
+          onClick={next}
+          disabled={idx === projects.length - 1}
+          aria-label="Keyingi"
+          className="w-11 h-11 rounded-full border border-gray-300 dark:border-zinc-700 flex items-center justify-center text-gray-700 dark:text-zinc-300 active:scale-95 disabled:opacity-30 disabled:cursor-not-allowed transition-all bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md"
+        >
+          <FaArrowRight size={14} />
+        </button>
+      </div>
 
-          {/* INFO CARD - O'lchamlar va stil saqlandi, dark mode qo'shildi */}
-          <div 
-            ref={contentRef}
-            className="relative mt-4 w-full max-w-5xl bg-white dark:bg-zinc-900/90 dark:backdrop-blur-md rounded-2xl shadow-xl px-5 py-3 mx-4 flex flex-col gap-2 border border-gray-100 dark:border-zinc-800 flex-shrink-0 max-h-[40vh] sm:max-h-auto overflow-y-auto sm:overflow-visible"
-          >
-            <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
-              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-zinc-100">
-                {projects[index].title}
-              </h2>
-              <span className="text-sm text-gray-500 dark:text-zinc-400">
-                {projects[index].startYear} / {projects[index].endYear}
-              </span>
-            </div>
-
-            <p className="text-gray-700 dark:text-zinc-300 text-sm sm:text-base leading-tight">
-              {projects[index].minDescription || projects[index].description}
-            </p>
-
-            <div className="flex flex-wrap gap-2">
-              {projects[index].tags.map((t, i) => (
-                <span
-                  key={i}
-                  className="px-3 py-1 text-xs bg-black dark:bg-zinc-100 text-white dark:text-black rounded-full"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {/* Tugmalar bo'limi - Mobileda korinishi uchun gap-3 va mt-1 saqlandi */}
-            <div className="flex flex-col sm:flex-row gap-3 mt-2">
-              {projects[index].github && (
-                <a
-                  href={projects[index].github}
-                  target="_blank"
-                  className="flex-1 border border-black dark:border-zinc-700 rounded-xl py-2 text-center flex justify-center items-center hover:bg-black dark:hover:bg-zinc-100 hover:text-white dark:hover:text-black dark:text-zinc-200 transition text-sm font-semibold"
-                >
-                  GitHub 🔗
-                </a>
-              )}
-              {projects[index].demo && (
-                <a
-                  href={projects[index].demo}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex-1 "
-                >
-                  <ShimmerButton className="w-full h-full flex items-center justify-center gap-2 text-sm">
-                    {projects[index].title}
-                    <span className="transition-transform group-hover:translate-x-1">
-                      →
-                    </span>
-                  </ShimmerButton>
-                </a>
-              )}
-            </div>
-
-            {/* BorderBeam doim oxirida turadi */}
-            <BorderBeam
-              size={200}
-              duration={10}
-              className="opacity-40 dark:opacity-100"
-            />
-          </div>
-        </motion.div>
-      </AnimatePresence>
     </div>
   );
 }

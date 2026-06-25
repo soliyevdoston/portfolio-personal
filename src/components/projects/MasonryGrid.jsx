@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { BorderBeam } from "@/components/ui/border-beam";
@@ -5,7 +7,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 
 export default function ProjectsShowcase({ projects }) {
   return (
-    <div className="relative w-full py-20 flex flex-wrap justify-center gap-10 px-6  dark:bg-[#09090b] transition-colors duration-500">
+    <div className="relative w-full py-20 flex flex-wrap justify-center gap-10 px-6 transition-colors duration-500">
       {/* Orqa fon uchun nafis nur (faqat dark modeda) */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 w-full h-full bg-blue-500/5 blur-[120px] -z-10 hidden dark:block"></div>
 
