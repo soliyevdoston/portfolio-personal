@@ -64,7 +64,11 @@ export default function GlassCards({ projects }) {
   };
 
   return (
-    <div className="relative w-full h-[calc(100vh-160px)] sm:h-[calc(100vh-180px)] lg:h-auto lg:min-h-[calc(100vh-180px)] py-2 lg:py-6 flex flex-col lg:block">
+    <div
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+      className="relative w-full h-[calc(100vh-160px)] sm:h-[calc(100vh-180px)] lg:h-auto lg:min-h-[calc(100vh-180px)] py-2 lg:py-6 flex flex-col lg:block touch-pan-y select-none"
+    >
 
       {/* Asosiy ko'rinish */}
       <div className="grid grid-rows-[30vh_1fr] sm:grid-rows-[35vh_1fr] lg:grid-rows-none lg:grid-cols-[1fr_1.25fr] gap-3 lg:gap-14 flex-1 min-h-0 lg:h-full lg:items-stretch">
@@ -197,8 +201,6 @@ export default function GlassCards({ projects }) {
 
         {/* O'NG — Rasm */}
         <div
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
           className="relative order-1 lg:order-2 h-[30vh] sm:h-[35vh] lg:h-[75vh] rounded-xl lg:rounded-3xl overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200 dark:from-zinc-900 dark:to-zinc-950 shadow-xl lg:shadow-2xl dark:shadow-black/50 ring-1 ring-black/5 dark:ring-white/10 touch-pan-y"
         >
           <AnimatePresence mode="wait" custom={dir}>
@@ -226,6 +228,17 @@ export default function GlassCards({ projects }) {
               />
             </motion.div>
           </AnimatePresence>
+
+          {/* MOBILE — swipe ishorasi (faqat birinchi loyihada, o'rgatuvchi sifatida) */}
+          {idx === 0 && (
+            <div className="lg:hidden absolute bottom-2 left-1/2 -translate-x-1/2 z-10 pointer-events-none animate-pulse">
+              <span className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/55 text-white text-[11px] font-medium backdrop-blur-md whitespace-nowrap">
+                <FaArrowLeft size={9} />
+                yonga suring
+                <FaArrowRight size={9} />
+              </span>
+            </div>
+          )}
 
         </div>
       </div>
