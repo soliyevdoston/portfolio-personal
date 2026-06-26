@@ -45,7 +45,7 @@ export default function ContactCompact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const name = e.target.name.value;
-    const email = e.target.email.value;
+    const contact = e.target.contact.value;
     const projectType = e.target.projectType?.value || "Aniqlanmagan";
     const message = e.target.message.value;
 
@@ -63,7 +63,7 @@ export default function ContactCompact() {
 <b>📬 Yangi Murojaat!</b>
 
 👤 <b>Foydalanuvchi:</b> ${name}
-📧 <b>Email:</b> ${email}
+📞 <b>Bog'lanish:</b> ${contact}
 🎯 <b>Loyiha turi:</b> ${projectType}
 
 📝 <b>Murojaat mazmuni:</b>
@@ -156,9 +156,9 @@ export default function ContactCompact() {
             className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
           />
           <input
-            type="email"
-            name="email"
-            placeholder="Email"
+            type="text"
+            name="contact"
+            placeholder="Telefon yoki Telegram (@username)"
             required
             className="bg-slate-100 dark:bg-zinc-800 border border-slate-200 dark:border-zinc-700 w-full px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-slate-900 dark:text-zinc-100 placeholder:text-slate-400 dark:placeholder:text-zinc-500 transition-all font-medium shadow-sm"
           />
