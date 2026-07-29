@@ -23,12 +23,34 @@ import moltacaldo from "../assets/moltacaldo.webp";
 import edumind from "../assets/edumind.webp";
 import threed from "../assets/threed.webp";
 import yado from "../assets/yado.webp";
+import nazoratda from "../assets/nazoratda.webp";
+import nazoratdaIelts from "../assets/nazoratda-ielts.webp";
 const tabs = [
   { id: "glass", label: "Vitrina" },
   { id: "masonry", label: "Grid" },
 ];
 
 const SAMPLE = [
+  {
+    id: 18,
+    title: "Nazoratda",
+    minDescription:
+      "Nazoratda — maktab va o'quv markazlari uchun sun'iy intellekt bilan kuchaytirilgan yagona boshqaruv tizimi. Davomat, baholar, to'lovlar va moliya, dars jadvali, SMS bildirishnomalar, CRM (lidlar boshqaruvi) va telefon ilovasi — barchasi bitta tizimda. 25+ tayyor modul va 5 ta rol (superadmin, admin, hisobchi, o'qituvchi, o'quvchi/ota-ona) uchun alohida ekranlar. AI test generatori bir necha soniyada test tuzadi, ota-onalar bola hisobotini telefondan ko'radi. Hozirda 3 ta xususiy maktab foydalanib kelmoqda.",
+    description:
+      "Nazoratda — maktab va o'quv markazlari uchun AI bilan kuchaytirilgan yagona boshqaruv tizimi. Davomat, moliya, jadval, SMS, CRM va telefon ilovasi bir tizimda. 5 ta rol uchun alohida ekran va 25+ modul. Hozirda 3 ta xususiy maktab foydalanmoqda.",
+    startYear: "01-04-2026",
+    endYear: "20-07-2026",
+    tags: [
+      "Fullstack",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "TailwindCSS",
+      "AI",
+    ],
+    demo: "https://nazoratda.uz",
+    image: nazoratda.src,
+  },
   {
     id: 12,
     title: "Intellect Olympiad",
@@ -68,6 +90,26 @@ const SAMPLE = [
     ],
     demo: "https://osontestol.uz",
     image: TestOnline.src,
+  },
+  {
+    id: 19,
+    title: "Nazoratda IELTS",
+    minDescription:
+      "Nazoratda IELTS — rasmiy imtihon muhitini piksel darajasida takrorlaydigan mustaqil IELTS mock test platformasi. To'rtta bo'lim — Listening (audio bir marta), Reading (bo'lingan ekran va belgilash vositalari), Writing (jonli so'z sanagich va avtosaqlash) hamda Speaking (mikrofon orqali, AI va ekspert baholovi). Real taymer, qat'iy nazorat (fokus kuzatuvi, nusxa olishni cheklash) bilan haqiqiy imtihon bosimini his qildiradi. Listening/Reading avtomatik, Writing/Speaking AI + inson ekspert tomonidan IELTS band shkalasi bo'yicha baholanadi. Natijada har bo'lim va umumiy band, hamda QR kod bilan tekshiriladigan sertifikat beriladi. O'quv markazlari uchun alohida admin panel mavjud.",
+    description:
+      "Nazoratda IELTS — rasmiy imtihon muhitini takrorlaydigan mustaqil IELTS mock test platformasi. Listening, Reading, Writing va Speaking bo'limlari real taymer va qat'iy nazorat bilan. Writing/Speaking AI va ekspert tomonidan baholanadi, natijada band va QR kodli sertifikat beriladi.",
+    startYear: "20-06-2026",
+    endYear: "25-07-2026",
+    tags: [
+      "Fullstack",
+      "Next.js",
+      "NestJS",
+      "PostgreSQL",
+      "TailwindCSS",
+      "AI",
+    ],
+    demo: "https://ielts.nazoratda.uz",
+    image: nazoratdaIelts.src,
   },
   {
     id: 0,
