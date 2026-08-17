@@ -10,9 +10,6 @@ import PasswordImg from "../assets/PASSWORD2.webp";
 import TestOnline from "../assets/onlinetest.webp";
 import MemoryImg from "../assets/memory.webp";
 import Istiqbolluck from "../assets/istiqbolluck.webp";
-import superadministiqbol from "../assets/superadmin-istiqbol.webp";
-import teacheristiqbol from "../assets/teacher-istiqbol.webp";
-import studentistiqbol from "../assets/student-istiqbol.webp";
 import legallink from "../assets/legallink.webp";
 import intellectolympiad from "../assets/intellectolympiad.webp";
 import educode from "../assets/educode.webp";
@@ -168,72 +165,6 @@ const SAMPLE = [
     tags: ["React", "TailwindCSS"],
     demo: "https://www.legallink.uz",
     image: legallink.src,
-  },
-  {
-    id: 1,
-    title: "Istiqbol Luck - superadmin",
-    minDescription:
-      "Istiqbol Luck superadmin — maktab ma'muriyati uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali maktab ma'muriyati o'quvchilar, o'qituvchilar va test natijalarini samarali boshqarishi mumkin.",
-    description:
-      "Istiqbol Luck superadmin — maktab ma'muriyati uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali maktab ma'muriyati o'quvchilar, o'qituvchilar va test natijalarini samarali boshqarishi mumkin. Boshqaruv paneli intuitiv interfeysga ega bo'lib, ma'lumotlarni tez va oson yangilash imkonini beradi.",
-    startYear: "01-01-2026",
-    endYear: "03-03-2026",
-    tags: [
-      "Fullstack",
-      "React",
-      "TailwindCSS",
-      "NodeJs",
-      "ExpressJs",
-      "postgreSQL",
-      "AI",
-    ],
-
-    demo: "https://superadmin.istiqbolluck.uz",
-    image: superadministiqbol.src,
-  },
-  {
-    id: 2,
-    title: "Istiqbol Luck - teacher",
-    minDescription:
-      "Istiqbol Luck teacher — o'qituvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o'qituvchilar o'quvchilari bilan bog'lanish, test natijalarini ko'rish va boshqa vazifalarni bajarish mumkin.",
-    description:
-      "Istiqbol Luck teacher — o'qituvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o'qituvchilar o'quvchilari bilan bog'lanish, test natijalarini ko'rish va boshqa vazifalarni bajarish mumkin. Boshqaruv paneli intuitiv interfeysga ega bo'lib, ma'lumotlarni tez va oson yangilash imkonini beradi.",
-    startYear: "01-01-2026",
-    endYear: "03-03-2026",
-    tags: [
-      "Fullstack",
-      "React",
-      "TailwindCSS",
-      "NodeJs",
-      "ExpressJs",
-      "postgreSQL",
-      "AI",
-    ],
-
-    demo: "https://teacher.istiqbolluck.uz",
-    image: teacheristiqbol.src,
-  },
-  {
-    id: 3,
-    title: "Istiqbol Luck - student",
-    minDescription:
-      "Istiqbol Luck student — o'quvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o'quvchilar o'quv materiallarini ko'rish, test natijalarini ko'rish va boshqa vazifalarni bajarish mumkin.",
-    description:
-      "Istiqbol Luck student — o'quvchilar uchun maxsus ishlab chiqilgan boshqaruv paneli. Bu platforma orqali o'quvchilar o'quv materiallarini ko'rish, test natijalarini ko'rish va boshqa vazifalarni bajarish mumkin. Boshqaruv paneli intuitiv interfeysga ega bo'lib, ma'lumotlarni tez va oson yangilash imkonini beradi.",
-    startYear: "01-01-2026",
-    endYear: "03-03-2026",
-    tags: [
-      "Fullstack",
-      "React",
-      "TailwindCSS",
-      "NodeJs",
-      "ExpressJs",
-      "postgreSQL",
-      "AI",
-    ],
-
-    demo: "https://student.istiqbolluck.uz",
-    image: studentistiqbol.src,
   },
   {
     id: 17,
