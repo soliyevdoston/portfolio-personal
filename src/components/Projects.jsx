@@ -7,10 +7,7 @@ import MasonryGrid from "./projects/MasonryGrid";
 // Rasmlar (importlarni saqlab qoldik)
 import FerTeachImg from "../assets/ferteach.webp";
 import PasswordImg from "../assets/PASSWORD2.webp";
-import Dictionary from "../assets/dictionary.webp";
-import Contextstore from "../assets/contextstore.webp";
 import TestOnline from "../assets/onlinetest.webp";
-import Countries from "../assets/countries.webp";
 import MemoryImg from "../assets/memory.webp";
 import Istiqbolluck from "../assets/istiqbolluck.webp";
 import superadministiqbol from "../assets/superadmin-istiqbol.webp";
@@ -356,47 +353,6 @@ const SAMPLE = [
     github: "https://github.com/soliyevdoston/password-generate",
     demo: "https://password-generate.soliyev.uz",
     image: PasswordImg.src,
-  },
-  {
-    id: 9,
-    title: "English Dictionary",
-    minDescription:
-      "Inglizcha so'zlar va ularning ta'riflarini o'z ichiga olgan lug'at ilovasi.",
-    description:
-      "Inglizcha so'zlar — inglizcha ta'riflar. Tarjimasiz o'rganish.",
-    startYear: "12-12-2025",
-    endYear: "15-12-2025",
-    tags: ["React", "TailwindCSS", "Vite"],
-    github: "https://github.com/soliyevdoston/dictionary",
-    demo: "https://dictionary.soliyev.uz",
-    image: Dictionary.src,
-  },
-  {
-    id: 10,
-    title: "Context Store",
-    minDescription:
-      "ContextStore — mahsulotlarni savatga qo'shish va avtomatik hisoblash platformasi.",
-    description:
-      "ContextStore — mahsulotlarni savatga qo'shish va avtomatik hisoblash platformasi.",
-    startYear: "01-11-2025",
-    endYear: "05-11-2025",
-    tags: ["Fullstack", "React", "CSS", "Vite"],
-    github: "https://github.com/soliyevdoston/contextstore",
-    demo: "https://context-store.soliyev.uz",
-    image: Contextstore.src,
-  },
-  {
-    id: 11,
-    title: "Countries Information",
-    minDescription:
-      "Dunyo davlatlarining bayroqlari, poytaxtlari va aholisi haqida platforma.",
-    description: "Dunyo davlatlari haqida ma'lumotlar platformasi.",
-    startYear: "08-11-2025",
-    endYear: "10-11-2025",
-    tags: ["React", "TailwindCSS"],
-    github: "https://github.com/soliyevdoston/countries-react",
-    demo: "https://countries.soliyev.uz",
-    image: Countries.src,
   },
 ];
 
