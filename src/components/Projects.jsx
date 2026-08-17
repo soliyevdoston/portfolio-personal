@@ -25,6 +25,7 @@ import threed from "../assets/threed.webp";
 import yado from "../assets/yado.webp";
 import nazoratda from "../assets/nazoratda.webp";
 import nazoratdaIelts from "../assets/nazoratda-ielts.webp";
+import goldwing from "../assets/goldwing.webp";
 const tabs = [
   { id: "glass", label: "Vitrina" },
   { id: "masonry", label: "Grid" },
@@ -124,6 +125,19 @@ const SAMPLE = [
 
     demo: "https://www.istiqbolluck.uz/",
     image: Istiqbolluck.src,
+  },
+  {
+    id: 20,
+    title: "Gold Wing",
+    minDescription:
+      "Gold Wing — Farg'onadagi 1-11 sinf xususiy maktabi uchun ishlab chiqilgan zamonaviy rasmiy web sayt. Sayt orqali maktab faoliyati, ta'lim dasturlari, qabul jarayoni va maktab hayoti bilan tanishish mumkin. Uch tilli interfeys (uz/ru/en), ilovani yuklab olish, ariza qoldirish va yangiliklar bo'limi bilan jihozlangan. Backend NestJS da yozilgan va ariza bo'limi nazoratda.uz ning lidlar (CRM) moduli bilan to'g'ridan-to'g'ri bog'langan.",
+    description:
+      "Gold Wing — Farg'onadagi 1-11 sinf xususiy maktabi uchun rasmiy web sayt. NestJS backend va nazoratda.uz ning CRM moduli bilan integratsiyalashgan — arizalar to'g'ridan-to'g'ri lidlar bo'limiga tushadi.",
+    startYear: "03-08-2026",
+    endYear: "10-08-2026",
+    tags: ["Fullstack", "Next.js", "NestJS", "TailwindCSS"],
+    demo: "https://goldwing.uz",
+    image: goldwing.src,
   },
   {
     id: 14,

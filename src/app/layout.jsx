@@ -170,6 +170,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="uz">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('theme');if(t!=='light'){document.documentElement.classList.add('dark');}})();`,
+          }}
+        />
         <link rel="preload" href="/personal.jpg" as="image" />
         <script
           type="application/ld+json"
